@@ -1,0 +1,22 @@
+<resources>
+
+    <!-- Generic Strings -->
+    <string name="app_name">AppSAS</string>
+
+    <!-- Login Activity Strings -->
+    <string name="prompt_user">Usuario</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Login</string>
+    <string name="action_sign_in_short">Login</string>
+    <string name="error_invalid_user">Formato de usuario incorrecto</string>
+    <string name="error_invalid_password">El password es muy corto</string>
+    <string name="error_incorrect_password">Password incorrecto</string>
+    <string name="error_field_required">El campo es requerido</string>
+
+    <!-- Home Activity Strings -->
+    <string name="str_btn_get_docentes">Listar Docentes</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
