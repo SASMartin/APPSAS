@@ -61,6 +61,9 @@ public class Client {
             }
         } catch(Exception ex) {
             httpResponse.setMessage(DEFAULT_ERROR);
+        } finally {
+            if(urlConnection!=null)
+                urlConnection.disconnect();
         }
         return httpResponse;
     }
@@ -95,6 +98,9 @@ public class Client {
 
         } catch(Exception ex) {
             httpResponse.setMessage(DEFAULT_ERROR);
+        } finally {
+            if(urlConnection!=null)
+                urlConnection.disconnect();
         }
         return httpResponse;
     }
