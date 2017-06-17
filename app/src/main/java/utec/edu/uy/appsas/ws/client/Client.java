@@ -12,8 +12,8 @@ import java.util.Scanner;
 import utec.edu.uy.appsas.model.HTTPResponse;
 
 public class Client {
-    private final static String URL_LOGIN = "http://192.168.1.11:8081/AppWebCasoEstudioSAS_WS/sas/usuario/login";
-    private final static String URL_GET_DOCENTES = "http://192.168.1.11:8081/AppWebCasoEstudioSAS_WS/sas/docente/getDocentes";
+    private final static String URL_LOGIN = "http://host:8081/AppWebCasoEstudioSAS_WS/sas/usuario/login";
+    private final static String URL_GET_DOCENTES = "http://host:8081/AppWebCasoEstudioSAS_WS/sas/docente/getDocentes";
 
     private final static String TYPE_URLENCODED = "application/x-www-form-urlencoded";
     private final static String CHARSET = "UTF-8";
