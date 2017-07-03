@@ -30,6 +30,7 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    //Evento OnClick del boton Crear Docente
     public void go_to_set_docente (View view){
         Intent intent = new Intent(this,CrearDocActivity.class);
         intent.putExtra("usuario",usuario);
