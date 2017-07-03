@@ -15,11 +15,13 @@ public class Client {
     private final static String URL_CREATE_DOCENTE = "http://192.168.1.3:8081/AppWebCasoEstudioSAS_WS/sas/docente/createDocente";
 
     private final static String TYPE_URLENCODED = "application/x-www-form-urlencoded";
+    private final static String TYPE_JSON = "application/json";
     private final static String CHARSET = "UTF-8";
     private final static String METHOD_POST = "POST";
     private final static String METHOD_GET = "GET";
 
     private final static int HTTP_CODE_OK = 200;
+    private final static int HTTP_CODE_CREATED = 201;
     private final static int HTTP_CODE_UNAUTHORIZED = 401;
     private final static int HTTP_CODE_SERVER_ERROR = 500;
 
@@ -37,7 +39,6 @@ public class Client {
             query += String.format("&contrasenia=%s", URLEncoder.encode(contrasenia, charset));
             url = new URL(urlServicio + "?" + query);
 
-            //url = new URL(urlServicio);
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod(METHOD_POST);
             urlConnection.setRequestProperty("Content-Type", TYPE_URLENCODED);
@@ -45,6 +46,7 @@ public class Client {
             urlConnection.setDoInput(true);
             urlConnection.setDoOutput(true);
             urlConnection.connect();
+
             int code = urlConnection.getResponseCode();
             httpResponse = new HTTPResponse();
             httpResponse.setCode(code);
@@ -114,15 +116,22 @@ public class Client {
             String charset = CHARSET;
             String query = String.format("usuario=%s", URLEncoder.encode(usuario, charset));
             query += String.format("&token=%s", URLEncoder.encode(token, charset));
+            query += String.format("&jsonDocente=%s", URLEncoder.encode(jsonDocente, charset));
             url = new URL(urlServicio + "?" + query);
 
             urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setRequestMethod(METHOD_POST);
+            urlConnection.setRequestProperty("Content-Type", TYPE_JSON);
+
+            urlConnection.setDoInput(true);
+            urlConnection.setDoOutput(true);
+            urlConnection.connect();
 
             int code = urlConnection.getResponseCode();
             httpResponse = new HTTPResponse();
             httpResponse.setCode(code);
 
-            if(code == HTTP_CODE_OK) {
+            if(code == HTTP_CODE_CREATED) {
                 InputStream in = new BufferedInputStream(urlConnection.getInputStream());
                 httpResponse.setMessage(getResponseText(in));
             }else if(code == HTTP_CODE_UNAUTHORIZED || code == HTTP_CODE_SERVER_ERROR) {
