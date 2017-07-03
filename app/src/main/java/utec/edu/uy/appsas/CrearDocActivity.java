@@ -40,11 +40,11 @@ public class CrearDocActivity extends AppCompatActivity {
         token = intent.getStringExtra("token");
 
         btn_fNac = (Button) findViewById(R.id.btn_f_nac);
-        edt_fNac = (EditText) findViewById(R.id.edt_fecha_nac);
+        edt_fNac = (EditText) findViewById(R.id.edit_fecha_nac);
         btn_fIng = (Button) findViewById(R.id.btn_f_ing);
-        edt_fIng = (EditText) findViewById(R.id.edt_fecha_ing);
+        edt_fIng = (EditText) findViewById(R.id.edit_fecha_ing);
         btn_fEgre = (Button) findViewById(R.id.btn_f_egre);
-        edt_fEgre = (EditText) findViewById(R.id.edt_fecha_egre);
+        edt_fEgre = (EditText) findViewById(R.id.edit_fecha_egre);
     }
 
     //evento del boton fecha nacimiento

@@ -32,7 +32,7 @@
         style="@style/EditTextStyle"
         tools:layout_constraintRight_creator="1"
         android:layout_marginEnd="1dp"
-        app:layout_constraintRight_toRightOf="@id/edit_fecha_ing"
+        app:layout_constraintRight_toRightOf="@+id/edit_fecha_ing"
         android:layout_marginRight="1dp" />
 
     <Button
@@ -43,10 +43,10 @@
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
         app:layout_constraintBottom_toTopOf="@id/btn_f_egre"
-        app:layout_constraintRight_toRightOf="@id/btn_f_nac"
+        app:layout_constraintRight_toRightOf="@+id/btn_f_nac"
         tools:layout_constraintLeft_creator="1"
         android:layout_marginBottom="7dp"
-        app:layout_constraintLeft_toLeftOf="@id/btn_f_nac"
+        app:layout_constraintLeft_toLeftOf="@+id/btn_f_nac"
         app:layout_constraintHorizontal_bias="0.0"
         android:onClick="fecha_ingreso"/>
 
