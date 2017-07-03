@@ -104,7 +104,7 @@ public class Client {
         return httpResponse;
     }
 
-    public static HTTPResponse createDocente(String usuario, String token){
+    public static HTTPResponse createDocente(String usuario, String token, String jsonDocente){
         URL url;
         HttpURLConnection urlConnection = null;
         HTTPResponse httpResponse = null;

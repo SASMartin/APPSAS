@@ -10,17 +10,18 @@
         android:id="@+id/btn_f_egre"
         android:layout_width="88dp"
         android:layout_height="48dp"
-        android:text="Button"
+        android:text="@string/btn_f_egreso"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="121dp"
         tools:layout_constraintRight_creator="1"
         app:layout_constraintRight_toRightOf="@+id/btn_f_ing"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/btn_f_ing"
-        app:layout_constraintHorizontal_bias="1.0" />
+        app:layout_constraintLeft_toLeftOf="@id/btn_f_ing"
+        app:layout_constraintHorizontal_bias="1.0"
+        android:onClick="fecha_egreso"/>
 
     <EditText
-        android:id="@+id/edt_fecha_egre"
+        android:id="@+id/edit_fecha_egre"
         android:layout_width="240dp"
         android:layout_height="41dp"
         android:layout_marginBottom="126dp"
@@ -31,25 +32,26 @@
         style="@style/EditTextStyle"
         tools:layout_constraintRight_creator="1"
         android:layout_marginEnd="1dp"
-        app:layout_constraintRight_toRightOf="@+id/edt_fecha_ing"
+        app:layout_constraintRight_toRightOf="@id/edit_fecha_ing"
         android:layout_marginRight="1dp" />
 
     <Button
         android:id="@+id/btn_f_ing"
         android:layout_width="88dp"
         android:layout_height="48dp"
-        android:text="Button"
+        android:text="@string/btn_f_ingreso"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/btn_f_egre"
-        app:layout_constraintRight_toRightOf="@+id/btn_f_nac"
+        app:layout_constraintBottom_toTopOf="@id/btn_f_egre"
+        app:layout_constraintRight_toRightOf="@id/btn_f_nac"
         tools:layout_constraintLeft_creator="1"
         android:layout_marginBottom="7dp"
-        app:layout_constraintLeft_toLeftOf="@+id/btn_f_nac"
-        app:layout_constraintHorizontal_bias="0.0" />
+        app:layout_constraintLeft_toLeftOf="@id/btn_f_nac"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:onClick="fecha_ingreso"/>
 
     <EditText
-        android:id="@+id/edt_fecha_ing"
+        android:id="@+id/edit_fecha_ing"
         android:layout_width="240dp"
         android:layout_height="0dp"
         android:ems="10"
@@ -60,7 +62,7 @@
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
         app:layout_constraintBottom_toBottomOf="@+id/btn_f_ing"
-        app:layout_constraintRight_toRightOf="@+id/edt_fecha_nac"
+        app:layout_constraintRight_toRightOf="@+id/edit_fecha_nac"
         android:layout_marginTop="6dp"
         app:layout_constraintTop_toBottomOf="@+id/btn_f_nac"
         android:layout_marginBottom="6dp"
@@ -82,7 +84,7 @@
         />
 
     <EditText
-        android:id="@+id/edt_telefono"
+        android:id="@+id/edit_telefono"
         style="@style/EditTextStyle"
         android:layout_width="176dp"
         android:layout_height="40dp"
@@ -92,11 +94,11 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBaseline_toBaselineOf="@+id/edt_correo"
+        app:layout_constraintBaseline_toBaselineOf="@+id/edit_correo"
         tools:layout_constraintBaseline_creator="1" />
 
     <EditText
-        android:id="@+id/edt_apellido"
+        android:id="@+id/edit_apellido"
         style="@style/EditTextStyle"
         android:layout_width="166dp"
         android:layout_height="43dp"
@@ -106,11 +108,11 @@
         app:layout_constraintHorizontal_bias="0.93"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBaseline_toBaselineOf="@+id/edt_nombre"
+        app:layout_constraintBaseline_toBaselineOf="@+id/edit_nombre"
         tools:layout_constraintBaseline_creator="1" />
 
     <EditText
-        android:id="@+id/edt_documento"
+        android:id="@+id/edit_documento"
         style="@style/EditTextStyle"
         android:layout_width="170dp"
         android:layout_height="43dp"
@@ -122,10 +124,10 @@
         app:layout_constraintRight_toRightOf="parent"
         tools:layout_constraintTop_creator="1"
         android:layout_marginTop="15dp"
-        app:layout_constraintTop_toBottomOf="@+id/edt_nombre" />
+        app:layout_constraintTop_toBottomOf="@id/edit_nombre" />
 
     <EditText
-        android:id="@+id/edt_nombre"
+        android:id="@+id/edit_nombre"
         style="@style/EditTextStyle"
         android:layout_width="170dp"
         android:layout_height="44dp"
@@ -137,13 +139,13 @@
         app:layout_constraintRight_toRightOf="parent"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toBottomOf="@+id/edt_correo"
+        app:layout_constraintBottom_toBottomOf="@id/edit_correo"
         android:layout_marginTop="120dp"
         android:layout_marginBottom="120dp"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/edt_correo"
+        android:id="@+id/edit_correo"
         style="@style/EditTextStyle"
         android:layout_width="175dp"
         android:layout_height="43dp"
@@ -155,25 +157,26 @@
         app:layout_constraintHorizontal_bias="0.98"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/edt_fecha_egre"
+        app:layout_constraintBottom_toTopOf="@id/edit_fecha_egre"
         android:layout_marginTop="142dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@id/textView"
         android:layout_marginBottom="141dp" />
 
     <Button
         android:id="@+id/btn_f_nac"
         android:layout_width="88dp"
         android:layout_height="48dp"
-        android:text="Button"
+        android:text="@string/btn_f_nacimiento"
         android:layout_marginLeft="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
         tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/btn_f_ing"
+        app:layout_constraintBottom_toTopOf="@id/btn_f_ing"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="10dp" />
+        android:layout_marginBottom="10dp"
+        android:onClick="fecha_nacimiento"/>
 
     <EditText
-        android:id="@+id/edt_fecha_nac"
+        android:id="@+id/edit_fecha_nac"
         style="@style/EditTextStyle"
         android:layout_width="240dp"
         android:layout_height="45dp"
@@ -181,28 +184,29 @@
         android:hint="@string/fechaNac"
         android:inputType="textPersonName"
         tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/edt_fecha_ing"
+        app:layout_constraintBottom_toTopOf="@id/edit_fecha_ing"
         android:layout_marginStart="11dp"
         tools:layout_constraintLeft_creator="1"
         android:layout_marginBottom="9dp"
-        app:layout_constraintLeft_toRightOf="@+id/btn_f_nac"
+        app:layout_constraintLeft_toRightOf="@id/btn_f_nac"
         android:layout_marginLeft="11dp" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="@string/btn_create_doc"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintBottom_creator="1"
         android:layout_marginStart="29dp"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginTop="35dp"
-        app:layout_constraintTop_toBottomOf="@+id/edt_fecha_egre"
+        app:layout_constraintTop_toBottomOf="@+id/edit_fecha_egre"
         tools:layout_constraintLeft_creator="1"
         android:layout_marginBottom="43dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="29dp" />
+        android:layout_marginLeft="29dp"
+        android:onClick="create_docente"/>
 
     <Button
         android:id="@+id/button5"
@@ -216,4 +220,5 @@
         app:layout_constraintBottom_toBottomOf="@+id/button4"
         android:layout_marginEnd="25dp"
         app:layout_constraintTop_toTopOf="@+id/button4" />
+
 </android.support.constraint.ConstraintLayout>
