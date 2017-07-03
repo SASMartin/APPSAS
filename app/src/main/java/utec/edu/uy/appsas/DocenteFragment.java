@@ -13,11 +13,15 @@ import android.widget.ListView;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import utec.edu.uy.appsas.model.Docente;
 import utec.edu.uy.appsas.model.HTTPResponse;
+import utec.edu.uy.appsas.model.Pais;
 import utec.edu.uy.appsas.ws.client.Client;
 
 public class DocenteFragment extends Fragment {
@@ -66,13 +70,23 @@ public class DocenteFragment extends Fragment {
             try {
                 response = Client.getDocentes(mUsuario, mToken);
                 JSONArray respJSON = new JSONArray(response.getMessage());
+
                 List<Docente> docentes = new ArrayList<>();
                 for (int i = 0; i < respJSON.length(); i++) {
                     JSONObject obj = respJSON.getJSONObject(i);
                     String nombre = obj.getString("nombre");
+                    String apellido = obj.getString("apellido");
+                    String telefono = obj.getString("telefono");
                     String documento = obj.getString("documento");
-                    String pais = obj.getString("apellido");
-                    docentes.add(new Docente(nombre, documento, pais));
+                    Date fechaNac = converterToDate(obj.getString("fechaNac"));
+                    String correo = obj.getString("correo");
+                    Pais pais = null;
+                    Date fechaEngreso = convertidorToDate(obj.getString("fechaEgreso"));
+
+                    Date fechaIngreso = converterToDate(obj.getString("fechaIngreso"));
+                    docentes.add(new Docente(nombre, telefono, documento, apellido, fechaNac, correo, pais, fechaEngreso, fechaIngreso));
+
+
                 }
                 mDocentesAdapter​ = new DocenteAdapter(getActivity(), docentes);
             } catch (Exception ex) {
@@ -89,6 +103,29 @@ public class DocenteFragment extends Fragment {
                 mDocentesList​.setAdapter(mDocentesAdapter​);
             }
         }
+    }
+    public Date convertidorToDate(String dateString) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss aa");
+        Date convertedDate = new Date();
+        try {
+            convertedDate = dateFormat.parse(dateString);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return convertedDate;
+    }
+
+    public static Date converterToDate(String dateString){
+        Date date = null;
+        try{
+            Calendar cal = Calendar.getInstance();
+            cal.setTimeInMillis(new Long(dateString));
+            date = new Date(cal.getTimeInMillis());
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return date;
     }
 
 }

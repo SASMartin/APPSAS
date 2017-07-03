@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import utec.edu.uy.appsas.model.Docente;
@@ -30,16 +32,33 @@ public class DocenteAdapter extends ArrayAdapter<Docente> {
                     false);
         }
         // Referencias UI.
+
+
+
         TextView nombre = (TextView) convertView.findViewById(R.id.tv_nombre);
-        TextView documento = (TextView) convertView.findViewById(R.id.tv_documento);
-        TextView pais = (TextView) convertView.findViewById(R.id.tv_pais);
+        TextView documento = (TextView)convertView.findViewById(R.id.tv_documento);
+        TextView telefono = (TextView)convertView.findViewById(R.id.tv_telefono);
+        TextView correo = (TextView)convertView.findViewById(R.id.tv_correo);
+        TextView fechaNac = (TextView)convertView.findViewById(R.id.tv_fechaNac);
+        TextView fechaIngreso = (TextView)convertView.findViewById(R.id.tv_fechaIngreso);
+        TextView fechaEgreso = (TextView)convertView.findViewById(R.id.tv_fechaEgreso);
+
+
+
         // Docente actual.
+
         Docente docente = getItem(position);
-        // Setup.
-        nombre.setText(docente.getmNombre());
-        documento.setText(docente.getmDocumento());
-        pais.setText(docente.getmPais());
-        return convertView;
-    }
+
+        //setup
+        nombre.setText(docente.getNombre()+" " + docente.getApellido());
+        documento.setText(docente.getDocumento());
+        telefono.setText(docente.getTelefono());
+        correo.setText(docente.getCorreo());
+        DateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+        fechaNac.setText(formatoFecha.format(docente.getFechaNac()));
+        fechaIngreso.setText(formatoFecha.format(docente.getFechaIngreso()));
+        fechaEgreso.setText(formatoFecha.format(docente.getFechaEgreso()));
+        return convertView ;
+}
 
 }

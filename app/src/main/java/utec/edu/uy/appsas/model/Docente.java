@@ -1,41 +1,48 @@
 package utec.edu.uy.appsas.model;
 
-public class Docente {
-    private String mNombre​;
-    private String mDocumento;
-    private String mPais​;
+import java.util.Date;
+import java.util.UUID;
 
-    public Docente(String nombre, String documento, String pais) {
-        this.mNombre​ = nombre;
-        this.mDocumento = documento;
-        this.mPais​ = pais;
-    }
+/**
+ * Created by usuario on 09-jun-17.
+ */
 
-    public String getmNombre() {
-        return mNombre​;
-    }
-    public void setmNombre(String mNombre) {
-        this.mNombre​ = mNombre;
-    }
-    public String getmDocumento() {
-        return mDocumento;
-    }
-    public void setmDocumento(String mDocumento) {
-        this.mDocumento = mDocumento;
-    }
-    public String getmPais() {
-        return mPais​;
-    }
-    public void setmPais(String mPais) {
-        this.mPais​ = mPais;
+public class Docente extends Persona {
+
+    private String  id ;
+    private Date fechaEgreso;
+    private Date fechaIngreso;
+
+
+    public Docente(String nombre, String telefono, String documento, String apellido, Date fechaNac, String correo, Pais pais, Date fechaEgreso, Date fechaIngreso) {
+        super(nombre, telefono, documento, apellido, fechaNac, correo, pais);
+        this.id =UUID.randomUUID().toString();
+        this.fechaEgreso = fechaEgreso;
+        this.fechaIngreso = fechaIngreso;
     }
 
     @Override
-    public String toString() {
-        return "Docente{" +
-                ", mNombre='" + mNombre​ + '\'' +
-                ", mDocumento='" + mDocumento + '\'' +
-                ", mPais=" + mPais​ +
-                '}';
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Date getFechaEgreso() {
+        return fechaEgreso;
+    }
+
+    public void setFechaEgreso(Date fechaEgreso) {
+        this.fechaEgreso = fechaEgreso;
+    }
+
+    public Date getFechaIngreso() {
+        return fechaIngreso;
+    }
+
+    public void setFechaIngreso(Date fechaIngreso) {
+        this.fechaIngreso = fechaIngreso;
     }
 }

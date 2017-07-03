@@ -1,11 +1,70 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <!-- Customize your theme here. -->
+        <item name="android:windowBackground">@drawable/fondologin2</item>
+
+        <!-- Estilos para Edit Texts-->
+        <item name="android:editTextStyle">@style/EditTextStyle</item>
+        <!--Estilos de ventana-->
+        <item name="android:windowFullscreen">true</item>
+
+
     </style>
 
-</resources>
+
+    <!--Estilos personalizados para los otros componentes-->
+    <style name="Titulo" parent="@android:style/Widget.Holo.Light.TextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+        <item name="android:textColor">@android:color/holo_blue_dark</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+
+    <style name="Subtitulo" parent="@android:style/Widget.Holo.Light.TextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+        <item name="android:textColor">@android:color/holo_blue_light</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+
+    <style name="Mensaje" parent="@android:style/Widget.Holo.Light.TextView">
+        <item name="android:textStyle">italic</item>
+        <item name="android:textColor">@android:color/holo_red_light</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Separator">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@android:color/holo_blue_bright</item>
+        <item name="android:layout_marginBottom">@dimen/activity_vertical_margin</item>
+    </style>
+
+    <style name="EditTextStyle" parent="@android:style/Widget.Holo.Light.EditText">
+        <item name="android:background">@drawable/rectangle</item>
+        <item name="android:layout_marginLeft">@dimen/activity_vertical_margin</item>
+
+
+       <item name="android:padding">10dp</item>
+    </style>
+
+    <style name="AutoCompleteTextViewStyle" parent="@android:style/Widget.Holo.Light.EditText">
+        <item name="android:background">@drawable/rectangle</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:layout_marginLeft">@dimen/activity_vertical_margin</item>
+    </style>
+
+    <style name="sgeTheme" parent="android:Theme.Holo.Light.Panel" />
+
+
+
+ </resources>

@@ -23,6 +23,15 @@
         </activity>
         <activity android:name=".HomeActivity" />
         <activity android:name=".ListarDocentesActivity"></activity>
+        <activity android:name=".CrearDocActivity" />
+        <activity android:name=".SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
     </application>
 
 </manifest>

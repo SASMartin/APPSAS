@@ -1,9 +1,9 @@
 package utec.edu.uy.appsas;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
@@ -25,6 +25,13 @@ public class HomeActivity extends AppCompatActivity {
     //Evento OnClick del boton Listar Docentes
     public void go_to_get_docentes(View view){
         Intent intent = new Intent(this, ListarDocentesActivity.class);
+        intent.putExtra("usuario",usuario);
+        intent.putExtra("token",token);
+        startActivity(intent);
+    }
+
+    public void go_to_set_docente (View view){
+        Intent intent = new Intent(this,CrearDocActivity.class);
         intent.putExtra("usuario",usuario);
         intent.putExtra("token",token);
         startActivity(intent);

@@ -16,6 +16,24 @@
     <!-- Home Activity Strings -->
     <string name="str_btn_get_docentes">Listar Docentes</string>
 
+    <string name="apellido">Apellido:</string>
+    <string name="nombre">Nombre:</string>
+    <string name="documento">Documento:</string>
+    <string name="telefono">Telefono:</string>
+    <string name="correo">Correo:</string>
+    <string name="fechaNac">Fecha de nacimiento:</string>
+    <string name="fechaIng">Fecha de ingreso:</string>
+    <string name="fechaEgr">Fecha de Egreso</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="bienvenido">Bienvenido</string>
+    <string name="usuario">Usuario:</string>
+    <string name="contraseña">Contraseña:</string>
+    <string name="ingresar">Ingresar</string>
+    <string name="crear_docente">Crear Docente</string>
+
+    <string name="titulo">INGRESE SU USUARIO Y PASSWORD</string>
+    <string name="titulo_crear_docente">INGRESE LOS DATOS DEL DOCENTE</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
