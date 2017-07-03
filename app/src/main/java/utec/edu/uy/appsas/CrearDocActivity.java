@@ -14,7 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -30,6 +30,7 @@ public class CrearDocActivity extends AppCompatActivity {
     Button btn_fNac, btn_fIng, btn_fEgre;
     EditText edit_telefono, edit_nombre, edit_apellido, edit_documento, edit_correo;
     EditText edit_fNac, edit_fIng, edit_fEgre;
+    TextView msg_error;
 
     private int dia, mes, anio;
     public static Date fechaNac = null, fechaIng = null, fechaEgre = null;
@@ -57,6 +58,7 @@ public class CrearDocActivity extends AppCompatActivity {
         edit_fIng = (EditText) findViewById(R.id.edit_fecha_ing);
         btn_fEgre = (Button) findViewById(R.id.btn_f_egre);
         edit_fEgre = (EditText) findViewById(R.id.edit_fecha_egre);
+        msg_error = (TextView) findViewById(R.id.msg_error);
     }
 
     //evento del boton fecha nacimiento
@@ -140,16 +142,13 @@ public class CrearDocActivity extends AppCompatActivity {
     }
 
     private class CrearDocenteTask extends AsyncTask<String, String, Boolean> {
+        HTTPResponse response = null;
 
         @Override
         protected Boolean doInBackground(String... params) {
             boolean result = true;
-            HTTPResponse response = null;
             try {
                 response = Client.createDocente(usuario, token, jsonDocente);
-                Toast.makeText(CrearDocActivity.this,response.getMessage(), Toast.LENGTH_LONG);
-                if(response.getCode()==HTTP_CODE_CREATED)
-                    clean();
             } catch (Exception ex) {
                 Log.e("ServicioRest", "Error!", ex);
                 result = false;
@@ -157,6 +156,13 @@ public class CrearDocActivity extends AppCompatActivity {
             return result;
         }
 
+        @Override
+        protected void onPostExecute(Boolean aBoolean) {
+            super.onPostExecute(aBoolean);
+            msg_error.setText(response.getMessage());
+            if(response.getCode()==HTTP_CODE_CREATED)
+                clean();
+        }
     }
 
     //Valida los campos de texto requeridos
@@ -195,6 +201,6 @@ public class CrearDocActivity extends AppCompatActivity {
         edit_fNac.setText("");
         edit_fIng.setText("");
         edit_fEgre.setText("");
+        msg_error.setText("");
     }
-    
 }

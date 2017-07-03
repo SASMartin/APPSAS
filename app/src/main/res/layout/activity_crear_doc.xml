@@ -208,4 +208,13 @@
         android:layout_marginLeft="29dp"
         android:onClick="create_docente"/>
 
+    <TextView
+        android:id="@+id/msg_error"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/button4"/>
+
 </android.support.constraint.ConstraintLayout>
