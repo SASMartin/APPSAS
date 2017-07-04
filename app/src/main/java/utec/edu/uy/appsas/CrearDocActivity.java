@@ -2,6 +2,7 @@ package utec.edu.uy.appsas;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.icu.util.Calendar;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -22,6 +23,7 @@ import android.widget.Toast;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -41,7 +43,9 @@ public class CrearDocActivity extends AppCompatActivity {
     HashMap<String, Long> mapPaises;
 
     private int dia, mes, anio;
-    public static Date fechaNac = null, fechaIng = null, fechaEgre = null;
+    public static Date fechaNac = new Date();
+    public static Date fechaIng = new Date();
+    public static Date fechaEgre = new Date();
     static String usuario, token, jsonDocente;
     
     private final static int HTTP_CODE_CREATED = 201;
@@ -68,6 +72,10 @@ public class CrearDocActivity extends AppCompatActivity {
         btn_fEgre = (Button) findViewById(R.id.btn_f_egre);
         edit_fEgre = (EditText) findViewById(R.id.edit_fecha_egre);
         msg_error = (TextView) findViewById(R.id.msg_error);
+
+        edit_fNac.setFocusable(false);
+        edit_fIng.setFocusable(false);
+        edit_fEgre.setFocusable(false);
 
         String[] paises = getPaises();
         spinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, paises));
@@ -99,8 +107,6 @@ public class CrearDocActivity extends AppCompatActivity {
             }
         }, dia, mes, anio);
         datePickerDialog.show();
-
-        fechaNac = calendarNac.getTime();
     }
 
     //evento del boton fecha ingreso
@@ -113,12 +119,10 @@ public class CrearDocActivity extends AppCompatActivity {
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                edit_fIng.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
+                edit_fIng.setText(dayOfMonth + "/" + (month+1) + "/" + year);
             }
         }, dia, mes, anio);
         datePickerDialog.show();
-
-        fechaIng = calendarIng.getTime();
     }
 
     //evento del boton fecha egreso
@@ -135,14 +139,20 @@ public class CrearDocActivity extends AppCompatActivity {
             }
         }, dia, mes, anio);
         datePickerDialog.show();
-
-        fechaEgre = calendarEgre.getTime();
     }
 
     //evento del boton crear
     public void create_docente(View view) {
         if(validate()) {
             try {
+                String pattern = "dd/MM/yyyy";
+                SimpleDateFormat formatter = new SimpleDateFormat(pattern);
+
+                fechaNac.setTime(formatter.parse(edit_fNac.getText().toString()).getTime());
+                fechaIng.setTime(formatter.parse(edit_fIng.getText().toString()).getTime());
+                if(!edit_fEgre.getText().toString().trim().isEmpty())
+                    fechaEgre.setTime(formatter.parse(edit_fEgre.getText().toString()).getTime());
+
                 Docente docente = new Docente(
                         edit_nombre.getText().toString(),
                         edit_telefono.getText().toString(),
@@ -183,9 +193,14 @@ public class CrearDocActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Boolean aBoolean) {
             super.onPostExecute(aBoolean);
-            msg_error.setText(response.getMessage());
-            if(response.getCode()==HTTP_CODE_CREATED)
+            if(response.getCode()==HTTP_CODE_CREATED) {
                 clean();
+                msg_error.setText(response.getMessage());
+                msg_error.setTextColor(Color.GREEN);
+            }else{
+                msg_error.setText(response.getMessage());
+                msg_error.setTextColor(Color.RED);
+            }
         }
     }
 
