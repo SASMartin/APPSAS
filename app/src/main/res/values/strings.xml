@@ -32,10 +32,11 @@
     <string name="contraseña">Contraseña:</string>
     <string name="ingresar">Ingresar</string>
     <string name="btn_create_doc">Crear</string>
-    <string name="btn_f_nacimiento">F. Nacimiento</string>
-    <string name="btn_f_ingreso">F. Ingreso</string>
-    <string name="btn_f_egreso">F. Egreso</string>
+    <string name="btn_f_nacimiento">Fecha Nac.</string>
+    <string name="btn_f_ingreso">Fecha Ingreso</string>
+    <string name="btn_f_egreso">Fecha Egreso</string>
     <string name="titulo">INGRESE SU USUARIO Y PASSWORD</string>
     <string name="titulo_crear_docente">INGRESE LOS DATOS DEL DOCENTE</string>
+    <string name="tst_crear_docente_ok">Docente creado exitosamente</string>
 
 </resources>
