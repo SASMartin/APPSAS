@@ -11,14 +11,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.Date;
+import java.util.HashMap;
 
 import utec.edu.uy.appsas.model.Docente;
 import utec.edu.uy.appsas.model.HTTPResponse;
@@ -31,6 +36,9 @@ public class CrearDocActivity extends AppCompatActivity {
     EditText edit_telefono, edit_nombre, edit_apellido, edit_documento, edit_correo;
     EditText edit_fNac, edit_fIng, edit_fEgre;
     TextView msg_error;
+    Spinner spinner;
+    String paisSelected;
+    HashMap<String, Long> mapPaises;
 
     private int dia, mes, anio;
     public static Date fechaNac = null, fechaIng = null, fechaEgre = null;
@@ -52,6 +60,7 @@ public class CrearDocActivity extends AppCompatActivity {
         edit_apellido = (EditText) findViewById(R.id.edit_apellido);
         edit_documento = (EditText) findViewById(R.id.edit_documento);
         edit_correo = (EditText) findViewById(R.id.edit_correo);
+        spinner = (Spinner) findViewById(R.id.spinner);
         btn_fNac = (Button) findViewById(R.id.btn_f_nac);
         edit_fNac = (EditText) findViewById(R.id.edit_fecha_nac);
         btn_fIng = (Button) findViewById(R.id.btn_f_ing);
@@ -59,6 +68,23 @@ public class CrearDocActivity extends AppCompatActivity {
         btn_fEgre = (Button) findViewById(R.id.btn_f_egre);
         edit_fEgre = (EditText) findViewById(R.id.edit_fecha_egre);
         msg_error = (TextView) findViewById(R.id.msg_error);
+
+        String[] paises = getPaises();
+        spinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, paises));
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long id){
+                Toast.makeText(adapterView.getContext(),
+                        (String) adapterView.getItemAtPosition(pos), Toast.LENGTH_SHORT).show();
+                paisSelected = (String) adapterView.getItemAtPosition(pos);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent){
+                //No hacer nada
+            }
+        });
     }
 
     //evento del boton fecha nacimiento
@@ -126,7 +152,7 @@ public class CrearDocActivity extends AppCompatActivity {
                         edit_apellido.getText().toString(),
                         fechaNac,
                         edit_correo.getText().toString(),
-                        new Pais(new Long(3), "Uruguay"),
+                        new Pais(mapPaises.get(paisSelected), paisSelected),
                         fechaEgre,
                         fechaIng);
 
@@ -189,6 +215,34 @@ public class CrearDocActivity extends AppCompatActivity {
             isValid = false;
         }
         return isValid;
+    }
+
+    //Obtiene la lista de paises
+    private String[] getPaises(){
+        mapPaises = new HashMap<>();
+
+        //TODO: Llamo a Rest
+        //*** datos de prueba
+        mapPaises.put("Uruguay", new Long(3));
+        mapPaises.put("Argentina", new Long(1));
+        mapPaises.put("Brasil", new Long(2));
+        mapPaises.put("Colombia", new Long(4));
+        mapPaises.put("Venezuela", new Long(5));
+        mapPaises.put("Ecuador", new Long(6));
+        mapPaises.put("Chile", new Long(7));
+        mapPaises.put("Bolivia", new Long(8));
+        mapPaises.put("Paraguay", new Long(9));
+        mapPaises.put("Peru", new Long(10));
+        //*** datos de prueba
+
+        String[] arrayPaises = new String[mapPaises.size()];
+        int i=0;
+        for(String key : mapPaises.keySet()) {
+            arrayPaises[i] = key;
+            i++;
+        }
+
+        return arrayPaises;
     }
 
     //Limpia los campos de texto
