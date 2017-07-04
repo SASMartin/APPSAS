@@ -131,13 +131,12 @@
         android:layout_width="166dp"
         android:layout_height="43dp"
         android:ems="10"
-        app:layout_constraintHorizontal_bias="0.926"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBaseline_toBaselineOf="@+id/edit_documento"
         app:layout_constraintBottom_toTopOf="@id/edit_correo"
+        app:layout_constraintBottom_toBottomOf="@id/edit_apellido"
         tools:layout_constraintBaseline_creator="1"
-        android:layout_marginBottom="19dp" />
+        android:layout_marginBottom="19dp"
+        android:layout_marginRight="10dp" />
 
     <EditText
         android:id="@+id/edit_nombre"
