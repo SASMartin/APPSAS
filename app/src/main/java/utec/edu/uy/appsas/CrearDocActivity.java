@@ -75,8 +75,6 @@ public class CrearDocActivity extends AppCompatActivity {
 
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long id){
-                Toast.makeText(adapterView.getContext(),
-                        (String) adapterView.getItemAtPosition(pos), Toast.LENGTH_SHORT).show();
                 paisSelected = (String) adapterView.getItemAtPosition(pos);
             }
 
