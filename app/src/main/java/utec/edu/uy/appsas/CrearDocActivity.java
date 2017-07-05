@@ -152,8 +152,8 @@ public class CrearDocActivity extends AppCompatActivity {
                 fechaIng = new Date();
                 fechaNac.setTime(formatter.parse(edit_fNac.getText().toString()).getTime());
                 fechaIng.setTime(formatter.parse(edit_fIng.getText().toString()).getTime());
-                Docente docente;
-                if(!edit_fEgre.getText().toString().trim().isEmpty()) {
+                Docente docente = null;
+                if(edit_fEgre.getText().toString().trim().isEmpty()) {
                     docente = new Docente(
                             edit_nombre.getText().toString(),
                             edit_telefono.getText().toString(),
