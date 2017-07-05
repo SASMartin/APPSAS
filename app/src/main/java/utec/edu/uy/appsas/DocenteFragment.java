@@ -13,7 +13,6 @@ import android.widget.ListView;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -80,12 +79,10 @@ public class DocenteFragment extends Fragment {
                     String documento = obj.getString("documento");
                     Date fechaNac = converterToDate(obj.getString("fechaNac"));
                     String correo = obj.getString("correo");
-                    Pais pais = null;
-                    Date fechaEngreso = convertidorToDate(obj.getString("fechaEgreso"));
-
                     Date fechaIngreso = converterToDate(obj.getString("fechaIngreso"));
+                    Pais pais = null;
+                    Date fechaEngreso = converterToDate(obj.getString("fechaEgreso"));
                     docentes.add(new Docente(nombre, telefono, documento, apellido, fechaNac, correo, pais, fechaEngreso, fechaIngreso));
-
 
                 }
                 mDocentesAdapter​ = new DocenteAdapter(getActivity(), docentes);
@@ -104,26 +101,17 @@ public class DocenteFragment extends Fragment {
             }
         }
     }
-    public Date convertidorToDate(String dateString) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss aa");
-        Date convertedDate = new Date();
-        try {
-            convertedDate = dateFormat.parse(dateString);
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        return convertedDate;
-    }
 
-    public static Date converterToDate(String dateString){
+    public static Date converterToDate(String dateString) {
         Date date = null;
-        try{
-            Calendar cal = Calendar.getInstance();
-            cal.setTimeInMillis(new Long(dateString));
-            date = new Date(cal.getTimeInMillis());
-        }catch(Exception ex){
-            ex.printStackTrace();
+        if(!dateString.equals("null")){
+            try {
+                Calendar cal = Calendar.getInstance();
+                cal.setTimeInMillis(new Long(dateString));
+                date = new Date(cal.getTimeInMillis());
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
         }
         return date;
     }

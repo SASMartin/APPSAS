@@ -43,9 +43,9 @@ public class CrearDocActivity extends AppCompatActivity {
     HashMap<String, Long> mapPaises;
 
     private int dia, mes, anio;
-    public static Date fechaNac = new Date();
-    public static Date fechaIng = new Date();
-    public static Date fechaEgre = new Date();
+    public static Date fechaNac = null;
+    public static Date fechaIng = null;
+    public static Date fechaEgre = null;
     static String usuario, token, jsonDocente;
     
     private final static int HTTP_CODE_CREATED = 201;
@@ -148,10 +148,14 @@ public class CrearDocActivity extends AppCompatActivity {
                 String pattern = "dd/MM/yyyy";
                 SimpleDateFormat formatter = new SimpleDateFormat(pattern);
 
+                fechaNac = new Date();
+                fechaIng = new Date();
+                fechaEgre = new Date();
                 fechaNac.setTime(formatter.parse(edit_fNac.getText().toString()).getTime());
                 fechaIng.setTime(formatter.parse(edit_fIng.getText().toString()).getTime());
-                if(!edit_fEgre.getText().toString().trim().isEmpty())
+                if(!edit_fEgre.getText().toString().trim().isEmpty()) {
                     fechaEgre.setTime(formatter.parse(edit_fEgre.getText().toString()).getTime());
+                }
 
                 Docente docente = new Docente(
                         edit_nombre.getText().toString(),

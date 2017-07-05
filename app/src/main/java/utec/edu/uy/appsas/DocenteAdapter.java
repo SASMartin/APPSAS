@@ -24,16 +24,12 @@ public class DocenteAdapter extends ArrayAdapter<Docente> {
         // Obtener inflater.
         LayoutInflater inflater = (LayoutInflater) getContext()
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        // ¿Existe el view actual?
         if (null == convertView) {
             convertView = inflater.inflate(
                     R.layout.list_item_docente,
                     parent,
                     false);
         }
-        // Referencias UI.
-
-
 
         TextView nombre = (TextView) convertView.findViewById(R.id.tv_nombre);
         TextView documento = (TextView)convertView.findViewById(R.id.tv_documento);
@@ -43,10 +39,7 @@ public class DocenteAdapter extends ArrayAdapter<Docente> {
         TextView fechaIngreso = (TextView)convertView.findViewById(R.id.tv_fechaIngreso);
         TextView fechaEgreso = (TextView)convertView.findViewById(R.id.tv_fechaEgreso);
 
-
-
         // Docente actual.
-
         Docente docente = getItem(position);
 
         //setup
@@ -57,8 +50,9 @@ public class DocenteAdapter extends ArrayAdapter<Docente> {
         DateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
         fechaNac.setText(formatoFecha.format(docente.getFechaNac()));
         fechaIngreso.setText(formatoFecha.format(docente.getFechaIngreso()));
-        fechaEgreso.setText(formatoFecha.format(docente.getFechaEgreso()));
+        if(docente.getFechaEgreso()!=null)
+            fechaEgreso.setText(formatoFecha.format(docente.getFechaEgreso()));
         return convertView ;
-}
+    }
 
 }
