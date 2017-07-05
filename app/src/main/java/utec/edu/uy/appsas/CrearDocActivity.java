@@ -150,24 +150,34 @@ public class CrearDocActivity extends AppCompatActivity {
 
                 fechaNac = new Date();
                 fechaIng = new Date();
-                fechaEgre = new Date();
                 fechaNac.setTime(formatter.parse(edit_fNac.getText().toString()).getTime());
                 fechaIng.setTime(formatter.parse(edit_fIng.getText().toString()).getTime());
+                Docente docente;
                 if(!edit_fEgre.getText().toString().trim().isEmpty()) {
+                    docente = new Docente(
+                            edit_nombre.getText().toString(),
+                            edit_telefono.getText().toString(),
+                            edit_documento.getText().toString(),
+                            edit_apellido.getText().toString(),
+                            fechaNac,
+                            edit_correo.getText().toString(),
+                            new Pais(mapPaises.get(paisSelected), paisSelected),
+                            null,
+                            fechaIng);
+                }else {
+                    fechaEgre = new Date();
                     fechaEgre.setTime(formatter.parse(edit_fEgre.getText().toString()).getTime());
+                    docente = new Docente(
+                            edit_nombre.getText().toString(),
+                            edit_telefono.getText().toString(),
+                            edit_documento.getText().toString(),
+                            edit_apellido.getText().toString(),
+                            fechaNac,
+                            edit_correo.getText().toString(),
+                            new Pais(mapPaises.get(paisSelected), paisSelected),
+                            fechaEgre,
+                            fechaIng);
                 }
-
-                Docente docente = new Docente(
-                        edit_nombre.getText().toString(),
-                        edit_telefono.getText().toString(),
-                        edit_documento.getText().toString(),
-                        edit_apellido.getText().toString(),
-                        fechaNac,
-                        edit_correo.getText().toString(),
-                        new Pais(mapPaises.get(paisSelected), paisSelected),
-                        fechaEgre,
-                        fechaIng);
-
                 //Parseo de Objeto a JSON
                 ObjectMapper mapper = new ObjectMapper();
                 jsonDocente = mapper.writeValueAsString(docente);
