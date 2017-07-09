@@ -31,8 +31,8 @@ public class DocenteAdapter extends ArrayAdapter<Docente> {
                     false);
         }
 
-        TextView nombre = (TextView) convertView.findViewById(R.id.tv_nombre);
-        TextView documento = (TextView)convertView.findViewById(R.id.tv_documento);
+        TextView nombre = (TextView) convertView.findViewById(R.id.tv_nombre_est);
+        TextView documento = (TextView)convertView.findViewById(R.id.tv_documento_est);
         TextView telefono = (TextView)convertView.findViewById(R.id.tv_telefono);
         TextView correo = (TextView)convertView.findViewById(R.id.tv_correo);
         TextView fechaNac = (TextView)convertView.findViewById(R.id.tv_fechaNac);

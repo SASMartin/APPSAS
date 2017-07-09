@@ -39,6 +39,9 @@
     <string name="titulo_crear_docente">INGRESE LOS DATOS DEL DOCENTE</string>
     <string name="tst_crear_docente_ok">Docente creado exitosamente</string>
 
+    <!-- Listar Estudiante Activity String  -->
+    <string name="fechaMat">Fecha de primer matricula:</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

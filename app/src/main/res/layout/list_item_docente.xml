@@ -15,7 +15,7 @@
         android:layout_alignStart="@+id/tv_telefono" />
 
     <TextView
-        android:id="@+id/tv_nombre"
+        android:id="@+id/tv_nombre_est"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/tv_fechaEgreso"
@@ -37,12 +37,12 @@
         android:layout_toEndOf="@+id/tv_fechaEgreso" />
 
     <TextView
-        android:id="@+id/tv_documento"
+        android:id="@+id/tv_documento_est"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:layout_marginTop="13dp"
-        android:layout_below="@+id/tv_nombre"
+        android:layout_below="@+id/tv_nombre_est"
         android:layout_toRightOf="@+id/tv_fechaEgreso"
         android:layout_toEndOf="@+id/tv_fechaEgreso" />
 
@@ -51,9 +51,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:layout_below="@+id/tv_documento"
-        android:layout_alignLeft="@+id/tv_documento"
-        android:layout_alignStart="@+id/tv_documento"
+        android:layout_below="@+id/tv_documento_est"
+        android:layout_alignLeft="@+id/tv_documento_est"
+        android:layout_alignStart="@+id/tv_documento_est"
         android:layout_marginTop="15dp" />
 
     <TextView
@@ -80,8 +80,8 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/tv_documento"
-        android:layout_alignBottom="@+id/tv_documento"
+        android:layout_alignBaseline="@+id/tv_documento_est"
+        android:layout_alignBottom="@+id/tv_documento_est"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:layout_toLeftOf="@+id/tv_telefono"
@@ -149,7 +149,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/teachersicon"
-        android:layout_below="@+id/tv_nombre"
+        android:layout_below="@+id/tv_nombre_est"
         android:layout_alignRight="@+id/textView7"
         android:layout_alignEnd="@+id/textView7"
         android:layout_above="@+id/textView6" />
