@@ -1,12 +1,17 @@
 package utec.edu.uy.appsas;
 
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import utec.edu.uy.appsas.model.Estudiante;
+import utec.edu.uy.appsas.model.HTTPResponse;
 
 
 public class EstudianteFragment extends Fragment {
@@ -17,7 +22,10 @@ public class EstudianteFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static EstudianteFragment newInstance(String param1, String param2) {
+    public static EstudianteFragment newInstance(String usuario, String token) {
+        mUsuario = usuario;
+        mToken = token;
+
         EstudianteFragment fragment = new EstudianteFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
@@ -27,16 +35,33 @@ public class EstudianteFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-
-        }
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_estudiante, container, false);
+        View root = inflater.inflate(R.layout.fragment_estudiante, container, false);
+        // Instancia del ListView.
+        mEstudianteList​ = (ListView) root.findViewById(R.id.estudiante_list);
+
+        ObtenerEstudianteTask tarea = new ObtenerEstudianteTask();
+        tarea.execute();
+
+        return root;
+    }
+
+    private class ObtenerEstudianteTask extends AsyncTask<Void,Void,Boolean>{
+        private ArrayAdapter<Estudiante> mEstudianteAdapter ;
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            boolean result = true ;
+            HTTPResponse response = null;
+
+
+
+            return null;
+        }
     }
 
 }
