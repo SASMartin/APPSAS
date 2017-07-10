@@ -30,6 +30,14 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    //Evento OnClick del boton Listar Docentes
+    public void go_to_get_estudiante(View view){
+        Intent intent = new Intent(this, ListarEstuActivity.class);
+        intent.putExtra("usuario",usuario);
+        intent.putExtra("token",token);
+        startActivity(intent);
+    }
+
     //Evento OnClick del boton Crear Docente
     public void go_to_set_docente (View view){
         Intent intent = new Intent(this,CrearDocActivity.class);

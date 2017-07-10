@@ -21,7 +21,7 @@ public class ListarEstuActivity extends AppCompatActivity {
         if(estudianteFragment == null){
             estudianteFragment = EstudianteFragment.newInstance(usuario, token);
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.docente_container, estudianteFragment)
+                    .add(R.id.estudiante_container, estudianteFragment)
                     .commit();
         }
 
