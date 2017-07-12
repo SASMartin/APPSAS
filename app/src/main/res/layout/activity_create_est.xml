@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="utec.edu.uy.appsas.CreateEstActivity">
+
+    <EditText
+        android:id="@+id/edit_fecha_nac_est"
+        style="@style/EditTextStyle"
+        android:layout_width="159dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="28dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginStart="150dp"
+        android:ems="10"
+        android:hint="@string/fechaNac"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/edit_fecha_mat_est"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:layout_constraintBottom_creator="1" />
+
+    <EditText
+        android:id="@+id/edit_fecha_mat_est"
+        style="@style/EditTextStyle"
+        android:layout_width="159dp"
+        android:layout_height="43dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginStart="150dp"
+        android:ems="10"
+        android:hint="@string/fechaMat"
+        android:inputType="textPersonName"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btn_f_mat_est"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:layout_constraintBaseline_creator="1" />
+
+    <EditText
+        android:id="@+id/edit_apellido_est"
+        style="@style/EditTextStyle"
+        android:layout_width="159dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="131dp"
+        android:layout_marginLeft="209dp"
+        android:layout_marginStart="209dp"
+        android:layout_marginTop="133dp"
+        android:ems="10"
+        android:hint="@string/apellido"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/edit_correo_est"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintTop_creator="1" />
+
+    <EditText
+        android:id="@+id/edit_documento_est"
+        style="@style/EditTextStyle"
+        android:layout_width="158dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginRight="1dp"
+        android:ems="10"
+        android:hint="@string/documento"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/edit_telefono_est"
+        app:layout_constraintRight_toRightOf="@+id/edit_nombre_est"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintRight_creator="1" />
+
+    <EditText
+        android:id="@+id/edit_telefono_est"
+        style="@style/EditTextStyle"
+        android:layout_width="159dp"
+        android:layout_height="43dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:ems="10"
+        android:hint="@string/telefono"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.48"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintTop_creator="1" />
+
+    <EditText
+        android:id="@+id/edit_correo_est"
+        style="@style/EditTextStyle"
+        android:layout_width="159dp"
+        android:layout_height="43dp"
+        android:layout_marginLeft="209dp"
+        android:layout_marginStart="209dp"
+        android:ems="10"
+        android:hint="@string/correo"
+        android:inputType="textPersonName"
+        app:layout_constraintBaseline_toBaselineOf="@+id/edit_telefono_est"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:layout_constraintBaseline_creator="1" />
+
+    <EditText
+        android:id="@+id/edit_nombre_est"
+        style="@style/EditTextStyle"
+        android:layout_width="159dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="62dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="66dp"
+        android:ems="10"
+        android:hint="@string/nombre"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/edit_apellido_est"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/text_titulo_est"
+        app:layout_constraintVertical_bias="0.031"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintTop_creator="1" />
+
+    <Button
+        android:id="@+id/btn_f_nac_est"
+        android:onClick="fecha_nac_est_calendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="23dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginRight="18dp"
+        android:text="Button"
+        app:layout_constraintBottom_toTopOf="@+id/btn_f_mat_est"
+        app:layout_constraintRight_toLeftOf="@+id/edit_fecha_nac_est"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintRight_creator="1" />
+
+    <Button
+        android:id="@+id/btn_f_mat_est"
+        android:onClick="fecha_mat_est_calendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="29dp"
+        android:text="Button"
+        app:layout_constraintBottom_toTopOf="@+id/btn_crear_est"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="@+id/btn_f_nac_est"
+        app:layout_constraintRight_toRightOf="@+id/btn_f_nac_est"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1" />
+
+    <Button
+        android:id="@+id/btn_crear_est"
+        android:onClick="crear_estudiante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="42dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="@+id/btn_f_mat_est"
+        app:layout_constraintRight_toRightOf="@+id/btn_f_mat_est"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1" />
+
+    <TextView
+        android:id="@+id/text_titulo_est"
+        style="@style/Titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="69dp"
+        android:text="@string/titulo_crear_estudiante"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
+
+    <TextView
+        android:id="@+id/text_msg_est"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="26dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1" />
+
+    <Spinner
+        android:id="@+id/spinner_est"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/edit_documento_est"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="@+id/edit_correo_est"
+        app:layout_constraintRight_toRightOf="@+id/edit_correo_est"
+        app:layout_constraintTop_toTopOf="@+id/edit_documento_est"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
+</android.support.constraint.ConstraintLayout>

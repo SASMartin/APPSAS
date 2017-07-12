@@ -57,6 +57,11 @@
        <item name="android:padding">10dp</item>
     </style>
 
+    <style name="ButtonStyle" parent = "@android:style/Widget.Holo.Light.Button">
+        <item name="android:background">@drawable/redondeados</item>
+        <item name="android:layout_marginLeft">@dimen/activity_vertical_margin</item>
+    </style>
+
     <style name="AutoCompleteTextViewStyle" parent="@android:style/Widget.Holo.Light.EditText">
         <item name="android:background">@drawable/rectangle</item>
         <item name="android:padding">10dp</item>
