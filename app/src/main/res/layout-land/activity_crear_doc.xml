@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="utec.edu.uy.appsas.CrearDocActivity"
+    tools:layout_editor_absoluteY="0dp"
+    tools:layout_editor_absoluteX="0dp">
+
+    <TextView
+        android:id="@+id/msg_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="80dp"
+        android:paddingStart="80dp"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginStart="47dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView12"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/linearLayout5"
+        android:layout_marginLeft="47dp" />
+
+    <Button
+        android:id="@+id/button4"
+        style="@style/ButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:onClick="create_docente"
+        android:text="@string/btn_create_doc"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="16dp"
+        tools:layout_constraintRight_creator="1"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp" />
+
+    <TextView
+        android:id="@+id/textView12"
+        style="@style/Titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/titulo_crear_docente"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="49dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="188dp"
+        android:layout_height="167dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/linearLayout5"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.502"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1">
+
+        <EditText
+            android:id="@+id/edit_nombre"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:ems="10"
+            android:hint="@string/nombre"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="13dp"
+            tools:layout_editor_absoluteY="107dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:ems="10"
+            tools:layout_editor_absoluteX="19dp"
+            tools:layout_editor_absoluteY="187dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <EditText
+            android:id="@+id/edit_fecha_nac"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:ems="10"
+            android:hint="@string/fechaNac"
+            android:inputType="textPersonName"
+            android:onClick="fecha_nacimiento"
+            tools:layout_editor_absoluteX="19dp"
+            tools:layout_editor_absoluteY="260dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="188dp"
+        android:layout_height="162dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1">
+
+        <EditText
+            android:id="@+id/edit_apellido"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:ems="10"
+            android:hint="@string/apellido"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="211dp"
+            tools:layout_editor_absoluteY="108dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <EditText
+            android:id="@+id/edit_telefono"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:ems="10"
+            android:hint="@string/telefono"
+            android:inputType="phone"
+            tools:layout_editor_absoluteX="211dp"
+            tools:layout_editor_absoluteY="186dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <EditText
+            android:id="@+id/edit_fecha_ing"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:ems="10"
+            android:hint="@string/fechaIng"
+            android:inputType="textPersonName"
+            android:onClick="fecha_ingreso"
+            tools:layout_editor_absoluteX="227dp"
+            tools:layout_editor_absoluteY="260dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="188dp"
+        android:layout_height="167dp"
+        android:layout_marginBottom="108dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="0dp"
+        app:layout_constraintVertical_bias="1.0">
+
+        <EditText
+            android:id="@+id/edit_documento"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:ems="10"
+            android:hint="@string/documento"
+            android:inputType="number"
+            tools:layout_editor_absoluteX="406dp"
+            tools:layout_editor_absoluteY="107dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <EditText
+            android:id="@+id/edit_fecha_egre"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:ems="10"
+            android:hint="@string/fechaEgr"
+            android:inputType="textPersonName"
+            android:onClick="fecha_egreso"
+            tools:layout_editor_absoluteX="15dp"
+            tools:layout_editor_absoluteY="119dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <EditText
+            android:id="@+id/edit_correo"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:ems="10"
+            android:hint="@string/correo"
+            android:inputType="textWebEmailAddress"
+            tools:layout_editor_absoluteX="406dp"
+            tools:layout_editor_absoluteY="186dp" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

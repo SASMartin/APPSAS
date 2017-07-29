@@ -5,5 +5,8 @@
     android:layout_height="match_parent"
     android:id="@+id/docente_container"
     tools:context="utec.edu.uy.appsas.ListarDocentesActivity">
+    <include
+        android:id="@+id/toolbarAppSAS"
+        layout="@layout/toolbar" />
 
 </RelativeLayout>

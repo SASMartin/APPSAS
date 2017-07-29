@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="utec.edu.uy.appsas.CreateEstActivity"
+    tools:layout_editor_absoluteY="0dp"
+    tools:layout_editor_absoluteX="0dp">
+
+    <Button
+        android:id="@+id/btn_crear_est"
+        style="@style/ButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:onClick="crear_estudiante"
+        android:text="@string/btn_create_doc"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        android:layout_marginStart="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="5dp"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp" />
+
+    <TextView
+        android:id="@+id/textView13"
+        style="@style/Titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/titulo_crear_estudiante"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/text_msg_est"
+        app:layout_constraintRight_toRightOf="@+id/text_msg_est"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintLeft_toRightOf="@+id/text_msg_est" />
+
+    <TextView
+        android:id="@+id/text_msg_est"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/linear6"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linear6" />
+
+    <LinearLayout
+        android:layout_width="261dp"
+        android:layout_height="95dp"
+        android:orientation="vertical"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/btn_crear_est"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="18dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.501">
+
+        <EditText
+            android:id="@+id/edit_fecha_nac_est"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:layout_weight="0.19"
+            android:ems="10"
+            android:hint="@string/fechaNac"
+            android:inputType="textPersonName"
+            android:onClick="fecha_nac_est_calendar"
+            tools:layout_editor_absoluteX="43dp"
+            tools:layout_editor_absoluteY="267dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_weight="0.19" />
+
+        <EditText
+            android:id="@+id/edit_fecha_mat_est"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_weight="0.19"
+            android:ems="10"
+            android:hint="@string/fechaMat"
+            android:inputType="textPersonName"
+            android:onClick="fecha_mat_est_calendar"
+            tools:layout_editor_absoluteX="84dp"
+            tools:layout_editor_absoluteY="268dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear6"
+        android:layout_width="180dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="@+id/linear8"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintTop_toTopOf="@+id/linear8">
+
+        <EditText
+            android:id="@+id/edit_apellido_est"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:ems="10"
+            android:hint="@string/apellido"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="204dp"
+            tools:layout_editor_absoluteY="94dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <EditText
+            android:id="@+id/edit_telefono_est"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:ems="10"
+            android:hint="@string/telefono"
+            android:inputType="phone"
+            tools:layout_editor_absoluteX="204dp"
+            tools:layout_editor_absoluteY="171dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear7"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        android:layout_marginStart="17dp"
+        app:layout_constraintBottom_toBottomOf="@+id/linear6"
+        android:layout_marginEnd="7dp"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintTop_toTopOf="@+id/linear6"
+        app:layout_constraintLeft_toRightOf="@+id/linear6"
+        android:layout_marginLeft="17dp"
+        android:layout_marginRight="7dp">
+
+        <EditText
+            android:id="@+id/edit_documento_est"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:ems="10"
+            android:hint="@string/documento"
+            android:inputType="number"
+            tools:inputType="number"
+            tools:layout_editor_absoluteX="394dp"
+            tools:layout_editor_absoluteY="94dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <EditText
+            android:id="@+id/edit_correo_est"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:ems="10"
+            android:hint="@string/correo"
+            android:inputType="textEmailAddress"
+            tools:layout_editor_absoluteX="18dp"
+            tools:layout_editor_absoluteY="100dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear8"
+        android:layout_width="199dp"
+        android:layout_height="95dp"
+        android:layout_marginTop="85dp"
+        android:orientation="vertical"
+        app:layout_constraintHorizontal_bias="0.012"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1">
+
+        <EditText
+            android:id="@+id/edit_nombre_est"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:ems="10"
+            android:hint="@string/nombre"
+            android:inputType="textPersonName"
+            app:layout_constraintLeft_toLeftOf="parent"
+            tools:layout_editor_absoluteY="94dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <Spinner
+            android:id="@+id/spinner_est"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="171dp" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

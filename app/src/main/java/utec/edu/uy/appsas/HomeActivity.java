@@ -26,11 +26,11 @@ public class HomeActivity extends AppCompatActivity {
         token  = intent.getStringExtra("token");
 
         CircleMenu circleMenu = (CircleMenu)findViewById(R.id.circulo_menu);
-        circleMenu.setMainMenu(Color.parseColor("#33CCCC"),R.drawable.circulo_bienvenidad,R.drawable.logo)
-                .addSubMenu(Color.parseColor("#66FF99"),R.drawable.teachersicon)
-                .addSubMenu(Color.parseColor("#66FF99"),R.drawable.estudinate_imagen_lista2)
-                .addSubMenu(Color.parseColor("#FF3300"),R.drawable.teachersicon)
-                .addSubMenu(Color.parseColor("#FF3300"),R.drawable.estudinate_imagen_lista2)
+        circleMenu.setMainMenu(Color.parseColor("#5EFFEF"),R.drawable.push_button,R.drawable.logo)
+                .addSubMenu(Color.parseColor("#C2FFED"),R.drawable.profe_ingreso)
+                .addSubMenu(Color.parseColor("#C2FFED"),R.drawable.estu_ingreso)
+                .addSubMenu(Color.parseColor("#C2FFED"),R.drawable.profe_listado)
+                .addSubMenu(Color.parseColor("#C2FFED"),R.drawable.estu_listado)
                 .setOnMenuSelectedListener(new OnMenuSelectedListener() {
                     @Override
                     public void onMenuSelected(int index) {

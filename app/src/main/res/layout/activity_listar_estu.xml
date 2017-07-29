@@ -6,5 +6,8 @@
     android:layout_height="match_parent"
     android:id="@+id/estudiante_container"
     tools:context="utec.edu.uy.appsas.ListarEstuActivity">
+    <include
+        android:id="@+id/toolbarAppSAS"
+        layout="@layout/toolbar" />
 
 </android.support.constraint.ConstraintLayout>

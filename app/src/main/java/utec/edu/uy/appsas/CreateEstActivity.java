@@ -3,6 +3,7 @@ package utec.edu.uy.appsas;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.icu.util.GregorianCalendar;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -36,6 +37,7 @@ public class CreateEstActivity extends AppCompatActivity {
     EditText edt_f_nac, edt_f_mat ;
     TextView msg_error_est ;
     Spinner spiner_est ;
+    TextView textMsgErrorFecha ;
 
     String paisSelected ;
     HashMap<String,Long>mapaPaises;
@@ -43,7 +45,9 @@ public class CreateEstActivity extends AppCompatActivity {
     private int dia,mes,anio;
     public static Date fechaNacEst=null;
     public static Date fechaMat = null;
+    public static Date fechaActual ;
     static String usuario , token , jsonEstudiante ;
+
 
     private final static int HTTP_CODE_CREATED_EST = 201 ;
 
@@ -65,9 +69,11 @@ public class CreateEstActivity extends AppCompatActivity {
         edt_f_mat = (EditText)findViewById(R.id.edit_fecha_mat_est);
         edt_f_nac= (EditText)findViewById(R.id.edit_fecha_nac_est);
 
+
         btn_crear_est = (Button)findViewById(R.id.btn_crear_est);
-        btn_f_mat = (Button)findViewById(R.id.btn_f_mat_est);
-        btn_f_nac = (Button)findViewById(R.id.btn_f_nac_est);
+
+        edt_f_nac.setFocusable(false);
+        edt_f_mat.setFocusable(false);
 
         msg_error_est = (TextView)findViewById(R.id.text_msg_est);
 
@@ -93,27 +99,32 @@ public class CreateEstActivity extends AppCompatActivity {
 
     //evento del boton fecha nacimiento
     public void fecha_nac_est_calendar(View view){
-        final Calendar calendarNac_est = Calendar.getInstance();
-        dia = calendarNac_est.get(Calendar.DAY_OF_MONTH);
-        mes = calendarNac_est.get(Calendar.MONTH);
-        anio = calendarNac_est.get(Calendar.YEAR);
-
+        final Calendar calendarMat_est = Calendar.getInstance();
+        dia = calendarMat_est.get(Calendar.DAY_OF_MONTH);
+        mes = calendarMat_est.get(Calendar.MONTH);
+        anio = calendarMat_est.get(Calendar.YEAR);
+        fechaActual = calendarMat_est.getTime();
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 edt_f_nac.setText(dayOfMonth + "/" + (month+1) + "/" + year);
             }
         }, dia, mes, anio);
+        datePickerDialog.getDatePicker().setMaxDate(fechaActual.getTime());
         datePickerDialog.show();
 
 
     }
     //evento del boton fecha matriculacion
     public void fecha_mat_est_calendar(View view){
-        final Calendar calendarMat_est = Calendar.getInstance();
-        dia = calendarMat_est.get(Calendar.DAY_OF_MONTH);
-        mes = calendarMat_est.get(Calendar.MONTH);
-        anio = calendarMat_est.get(Calendar.YEAR);
+        fechaNacEst = new Date();
+        try {
+            String pattern = "dd/MM/yyyy";
+            SimpleDateFormat formatter = new SimpleDateFormat(pattern);
+            fechaNacEst.setTime(formatter.parse(edt_f_nac.getText().toString()).getTime());
+        }catch (Exception ex) {
+            Log.e("ServicioRest", "Error!", ex);
+        }
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -121,6 +132,7 @@ public class CreateEstActivity extends AppCompatActivity {
                 edt_f_mat.setText(dayOfMonth + "/" + (month+1) + "/" + year);
             }
         }, dia, mes, anio);
+        datePickerDialog.getDatePicker().setMinDate(fechaNacEst.getTime());
         datePickerDialog.show();
 
 
@@ -202,7 +214,71 @@ public class CreateEstActivity extends AppCompatActivity {
             edt_f_mat.setError(getString(R.string.error_field_required));
             isValid = false;
         }
+        if ((edt_correo.getText().toString().length()>0)){
+            boolean correo ;
+            correo = (edt_correo.getText().toString().matches("[a-zA-Z0-9._-]+@[a-z]+\\.[a-z]+"));
+
+            if(correo == false){
+                isValid = false;
+                edt_correo.setError(getString(R.string.error_correo));
+            }
+        }
+
+        if(esCIValida(edt_documento.getText().toString())==false){
+            edt_documento.setError(getString(R.string.error_documento));
+            isValid = false ;
+        }
+        if (validaNombre(edt_nombre.getText().toString())==false){
+            edt_nombre.setError(getString(R.string.error_nombre));
+            isValid = false ;
+        }
         return isValid;
+
+    }
+
+    //validacion cedula
+    public static boolean esCIValida(String ci) {
+
+        if(ci.length() != 7 && ci.length() != 8){
+            return false;
+        }else{
+            try{
+                Integer.parseInt(ci);
+            }catch (NumberFormatException e){
+                return false;
+            }
+        }
+
+        int digVerificador = Integer.parseInt((ci.charAt(ci.length() - 1)) + "" ) ;
+        int[] factores;
+        if(ci.length() == 7){ // CI viejas
+            factores = new int[]{9, 8, 7, 6, 3, 4};
+        }else{
+            factores = new int[]{2, 9, 8, 7, 6, 3, 4};
+        }
+
+
+        int suma = 0;
+        for(int i=0; i<ci.length()-1; i++ ){
+            int digito = Integer.parseInt(ci.charAt(i) + "" ) ;
+            suma += digito * factores[ i ];
+        }
+
+        int resto = suma % 10;
+        int checkdigit = 10 - resto;
+
+        if(checkdigit == 10){
+            return (digVerificador == 0);
+        }else {
+            return (checkdigit == digVerificador) ;
+        }
+
+    }
+    //validacion nombre
+    public static boolean validaNombre (String nom){
+        boolean valido;
+        valido = nom.matches("([a-z]|[A-Z]|\\^s)+");
+        return valido ;
     }
 
 

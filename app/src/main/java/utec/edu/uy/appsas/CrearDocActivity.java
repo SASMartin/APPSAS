@@ -46,6 +46,7 @@ public class CrearDocActivity extends AppCompatActivity {
     public static Date fechaIng = null;
     public static Date fechaEgre = null;
     static String usuario, token, jsonDocente;
+    public static Date fechaActual ;
     
     private final static int HTTP_CODE_CREATED = 201;
 
@@ -64,11 +65,8 @@ public class CrearDocActivity extends AppCompatActivity {
         edit_documento = (EditText) findViewById(R.id.edit_documento);
         edit_correo = (EditText) findViewById(R.id.edit_correo);
         spinner = (Spinner) findViewById(R.id.spinner);
-        btn_fNac = (Button) findViewById(R.id.btn_f_nac);
         edit_fNac = (EditText) findViewById(R.id.edit_fecha_nac);
-        btn_fIng = (Button) findViewById(R.id.btn_f_ing);
         edit_fIng = (EditText) findViewById(R.id.edit_fecha_ing);
-        btn_fEgre = (Button) findViewById(R.id.btn_f_egre);
         edit_fEgre = (EditText) findViewById(R.id.edit_fecha_egre);
         msg_error = (TextView) findViewById(R.id.msg_error);
 
@@ -98,6 +96,7 @@ public class CrearDocActivity extends AppCompatActivity {
         dia = calendarNac.get(Calendar.DAY_OF_MONTH);
         mes = calendarNac.get(Calendar.MONTH);
         anio = calendarNac.get(Calendar.YEAR);
+        fechaActual = calendarNac.getTime();
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -105,6 +104,7 @@ public class CrearDocActivity extends AppCompatActivity {
                 edit_fNac.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
             }
         }, dia, mes, anio);
+        datePickerDialog.getDatePicker().setMaxDate(fechaActual.getTime());
         datePickerDialog.show();
     }
 
@@ -114,6 +114,14 @@ public class CrearDocActivity extends AppCompatActivity {
         dia = calendarIng.get(Calendar.DAY_OF_MONTH);
         mes = calendarIng.get(Calendar.MONTH);
         anio = calendarIng.get(Calendar.YEAR);
+        fechaNac = new Date();
+        try {
+            String pattern = "dd/MM/yyyy";
+            SimpleDateFormat formatter = new SimpleDateFormat(pattern);
+            fechaNac.setTime(formatter.parse(edit_fNac.getText().toString()).getTime());
+        }catch (Exception ex) {
+            Log.e("ServicioRest", "Error!", ex);
+        }
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -121,7 +129,9 @@ public class CrearDocActivity extends AppCompatActivity {
                 edit_fIng.setText(dayOfMonth + "/" + (month+1) + "/" + year);
             }
         }, dia, mes, anio);
+        datePickerDialog.getDatePicker().setMinDate(fechaNac.getTime());
         datePickerDialog.show();
+
     }
 
     //evento del boton fecha egreso
@@ -130,6 +140,14 @@ public class CrearDocActivity extends AppCompatActivity {
         dia = calendarEgre.get(Calendar.DAY_OF_MONTH);
         mes = calendarEgre.get(Calendar.MONTH);
         anio = calendarEgre.get(Calendar.YEAR);
+        fechaIng = new Date();
+        try {
+            String pattern = "dd/MM/yyyy";
+            SimpleDateFormat formatter = new SimpleDateFormat(pattern);
+            fechaIng.setTime(formatter.parse(edit_fIng.getText().toString()).getTime());
+        }catch (Exception ex) {
+            Log.e("ServicioRest", "Error!", ex);
+        }
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -137,6 +155,7 @@ public class CrearDocActivity extends AppCompatActivity {
                 edit_fEgre.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
             }
         }, dia, mes, anio);
+        datePickerDialog.getDatePicker().setMinDate(fechaIng.getTime());
         datePickerDialog.show();
     }
 
@@ -219,7 +238,31 @@ public class CrearDocActivity extends AppCompatActivity {
 
     //Valida los campos de texto requeridos
     private boolean validate(){
+        try {
+        String pattern = "dd/MM/yyyy";
+        SimpleDateFormat formatter = new SimpleDateFormat(pattern);
+
+        fechaNac = new Date();
+        fechaIng = new Date();
+            fechaEgre = new Date();
+        fechaNac.setTime(formatter.parse(edit_fNac.getText().toString()).getTime());
+        fechaIng.setTime(formatter.parse(edit_fIng.getText().toString()).getTime());
+            fechaEgre.setTime(formatter.parse(edit_fEgre.getText().toString()).getTime());
+
+        } catch (Exception ex) {
+            Log.e("ServicioRest", "Error!", ex);
+        }
+
+
         boolean isValid = true;
+        if(fechaIng.before(fechaNac)){
+            edit_fIng.setError(getString(R.string.error_ivalid_date));
+            isValid = false ;
+        }
+        if(fechaEgre.before(fechaIng)){
+            edit_fEgre.setError(getString(R.string.error_ivalid_date));
+            isValid = false ;
+        }
         if(TextUtils.isEmpty(edit_nombre.getText().toString().trim())) {
             edit_nombre.setError(getString(R.string.error_field_required));
             isValid = false;
@@ -240,7 +283,69 @@ public class CrearDocActivity extends AppCompatActivity {
             edit_fIng.setError(getString(R.string.error_field_required));
             isValid = false;
         }
+        if ((edit_correo.getText().toString().length()>0)){
+            boolean correo ;
+            correo = (edit_correo.getText().toString().matches("[a-zA-Z0-9._-]+@[a-z]+\\.[a-z]+"));
+
+            if(correo == false){
+                isValid = false;
+                edit_correo.setError(getString(R.string.error_correo));
+            }
+        }
+        if(esCIValida(edit_documento.getText().toString())==false){
+            edit_documento.setError(getString(R.string.error_documento));
+            isValid = false ;
+        }
+        if (validaNombre(edit_nombre.getText().toString())==false){
+            edit_nombre.setError(getString(R.string.error_nombre));
+            isValid = false ;
+        }
         return isValid;
+    }
+
+    //validacion cedula
+    public static boolean esCIValida(String ci) {
+
+        if(ci.length() != 7 && ci.length() != 8){
+            return false;
+        }else{
+            try{
+                Integer.parseInt(ci);
+            }catch (NumberFormatException e){
+                return false;
+            }
+        }
+
+        int digVerificador = Integer.parseInt((ci.charAt(ci.length() - 1)) + "" ) ;
+        int[] factores;
+        if(ci.length() == 7){ // CI viejas
+            factores = new int[]{9, 8, 7, 6, 3, 4};
+        }else{
+            factores = new int[]{2, 9, 8, 7, 6, 3, 4};
+        }
+
+
+        int suma = 0;
+        for(int i=0; i<ci.length()-1; i++ ){
+            int digito = Integer.parseInt(ci.charAt(i) + "" ) ;
+            suma += digito * factores[ i ];
+        }
+
+        int resto = suma % 10;
+        int checkdigit = 10 - resto;
+
+        if(checkdigit == 10){
+            return (digVerificador == 0);
+        }else {
+            return (checkdigit == digVerificador) ;
+        }
+
+    }
+    //validacion nombre
+    public static boolean validaNombre (String nom){
+        boolean valido;
+        valido = nom.matches("([a-z]|[A-Z]|\\^s)+");
+        return valido ;
     }
 
     //Obtiene la lista de paises

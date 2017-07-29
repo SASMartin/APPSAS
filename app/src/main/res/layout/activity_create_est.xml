@@ -4,204 +4,219 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="utec.edu.uy.appsas.CreateEstActivity">
-
-    <EditText
-        android:id="@+id/edit_fecha_nac_est"
-        style="@style/EditTextStyle"
-        android:layout_width="159dp"
-        android:layout_height="43dp"
-        android:layout_marginBottom="28dp"
-        android:layout_marginLeft="150dp"
-        android:layout_marginStart="150dp"
-        android:ems="10"
-        android:hint="@string/fechaNac"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/edit_fecha_mat_est"
-        app:layout_constraintLeft_toLeftOf="parent"
-        tools:layout_constraintBottom_creator="1" />
-
-    <EditText
-        android:id="@+id/edit_fecha_mat_est"
-        style="@style/EditTextStyle"
-        android:layout_width="159dp"
-        android:layout_height="43dp"
-        android:layout_marginLeft="150dp"
-        android:layout_marginStart="150dp"
-        android:ems="10"
-        android:hint="@string/fechaMat"
-        android:inputType="textPersonName"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btn_f_mat_est"
-        app:layout_constraintLeft_toLeftOf="parent"
-        tools:layout_constraintBaseline_creator="1" />
-
-    <EditText
-        android:id="@+id/edit_apellido_est"
-        style="@style/EditTextStyle"
-        android:layout_width="159dp"
-        android:layout_height="43dp"
-        android:layout_marginBottom="131dp"
-        android:layout_marginLeft="209dp"
-        android:layout_marginStart="209dp"
-        android:layout_marginTop="133dp"
-        android:ems="10"
-        android:hint="@string/apellido"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="@+id/edit_correo_est"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+    tools:context="utec.edu.uy.appsas.CreateEstActivity"
+    tools:layout_editor_absoluteY="0dp"
+    tools:layout_editor_absoluteX="0dp">
+    <include
+        android:id="@+id/toolbarAppSAS"
+        layout="@layout/toolbar"
+        android:layout_height="0dp"
+        android:layout_width="0dp"
+        app:layout_constraintRight_toLeftOf="parent"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
-        tools:layout_constraintTop_creator="1" />
-
-    <EditText
-        android:id="@+id/edit_documento_est"
-        style="@style/EditTextStyle"
-        android:layout_width="158dp"
-        android:layout_height="41dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginRight="1dp"
-        android:ems="10"
-        android:hint="@string/documento"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/edit_telefono_est"
-        app:layout_constraintRight_toRightOf="@+id/edit_nombre_est"
-        tools:layout_constraintBottom_creator="1"
-        tools:layout_constraintRight_creator="1" />
-
-    <EditText
-        android:id="@+id/edit_telefono_est"
-        style="@style/EditTextStyle"
-        android:layout_width="159dp"
-        android:layout_height="43dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:ems="10"
-        android:hint="@string/telefono"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.48"
-        tools:layout_constraintBottom_creator="1"
-        tools:layout_constraintTop_creator="1" />
-
-    <EditText
-        android:id="@+id/edit_correo_est"
-        style="@style/EditTextStyle"
-        android:layout_width="159dp"
-        android:layout_height="43dp"
-        android:layout_marginLeft="209dp"
-        android:layout_marginStart="209dp"
-        android:ems="10"
-        android:hint="@string/correo"
-        android:inputType="textPersonName"
-        app:layout_constraintBaseline_toBaselineOf="@+id/edit_telefono_est"
-        app:layout_constraintLeft_toLeftOf="parent"
-        tools:layout_constraintBaseline_creator="1" />
-
-    <EditText
-        android:id="@+id/edit_nombre_est"
-        style="@style/EditTextStyle"
-        android:layout_width="159dp"
-        android:layout_height="43dp"
-        android:layout_marginBottom="62dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="66dp"
-        android:ems="10"
-        android:hint="@string/nombre"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="@+id/edit_apellido_est"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/text_titulo_est"
-        app:layout_constraintVertical_bias="0.031"
-        tools:layout_constraintBottom_creator="1"
-        tools:layout_constraintTop_creator="1" />
-
-    <Button
-        android:id="@+id/btn_f_nac_est"
-        android:onClick="fecha_nac_est_calendar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="23dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginRight="18dp"
-        android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/btn_f_mat_est"
-        app:layout_constraintRight_toLeftOf="@+id/edit_fecha_nac_est"
-        tools:layout_constraintBottom_creator="1"
-        tools:layout_constraintRight_creator="1" />
-
-    <Button
-        android:id="@+id/btn_f_mat_est"
-        android:onClick="fecha_mat_est_calendar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="29dp"
-        android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/btn_crear_est"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="@+id/btn_f_nac_est"
-        app:layout_constraintRight_toRightOf="@+id/btn_f_nac_est"
-        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/text_titulo_est"
         tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1" />
+        android:layout_marginBottom="13dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_crear_est"
+        style="@style/ButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
         android:onClick="crear_estudiante"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="42dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="@+id/btn_f_mat_est"
-        app:layout_constraintRight_toRightOf="@+id/btn_f_mat_est"
+        android:text="@string/btn_create_doc"
+        tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/text_msg_est"
+        android:layout_marginStart="9dp"
+        android:layout_marginEnd="9dp"
+        app:layout_constraintRight_toRightOf="parent"
         tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1" />
+        android:layout_marginBottom="17dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="9dp"
+        android:layout_marginRight="9dp" />
 
     <TextView
         android:id="@+id/text_titulo_est"
         style="@style/Titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="69dp"
         android:text="@string/titulo_crear_estudiante"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1" />
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="69dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/text_msg_est"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="26dp"
-        android:text="TextView"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.484"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1" />
+        android:layout_marginBottom="23dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
-    <Spinner
-        android:id="@+id/spinner_est"
+    <LinearLayout
+        android:layout_width="180dp"
+        android:layout_height="157dp"
+        android:layout_marginLeft="188dp"
+        android:layout_marginTop="132dp"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="188dp"
+        android:id="@+id/linearLayout4">
+
+        <EditText
+            android:id="@+id/edit_apellido_est"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:ems="10"
+            android:hint="@string/apellido"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="209dp"
+            tools:layout_editor_absoluteY="133dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <Spinner
+            android:id="@+id/spinner_est"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            tools:layout_editor_absoluteX="209dp"
+            tools:layout_editor_absoluteY="209dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <EditText
+            android:id="@+id/edit_correo_est"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:ems="10"
+            android:hint="@string/correo"
+            android:inputType="textEmailAddress"
+            tools:layout_editor_absoluteX="209dp"
+            tools:layout_editor_absoluteY="275dp" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/edit_documento_est"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="@+id/edit_correo_est"
-        app:layout_constraintRight_toRightOf="@+id/edit_correo_est"
-        app:layout_constraintTop_toTopOf="@+id/edit_documento_est"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_constraintBottom_creator="1"
-        tools:layout_constraintLeft_creator="1"
+        android:layout_height="158dp"
+        android:orientation="vertical"
+        app:layout_constraintRight_toLeftOf="@+id/linearLayout4"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1" />
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout4"
+        android:layout_marginEnd="3dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="3dp">
+
+        <EditText
+            android:id="@+id/edit_nombre_est"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:ems="10"
+            android:hint="@string/nombre"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="133dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <EditText
+            android:id="@+id/edit_documento_est"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:ems="10"
+            android:hint="@string/documento"
+            android:inputType="number"
+            tools:inputType="number"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="209dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <EditText
+            android:id="@+id/edit_telefono_est"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:ems="10"
+            android:hint="@string/telefono"
+            android:inputType="phone"
+            tools:layout_editor_absoluteX="17dp"
+            tools:layout_editor_absoluteY="275dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:orientation="vertical"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/btn_crear_est"
+        android:layout_marginStart="53dp"
+        android:layout_marginEnd="53dp"
+        app:layout_constraintRight_toRightOf="@+id/btn_crear_est"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="25dp"
+        app:layout_constraintLeft_toLeftOf="@+id/btn_crear_est"
+        android:layout_marginLeft="53dp"
+        android:layout_marginRight="53dp">
+
+        <EditText
+            android:id="@+id/edit_fecha_nac_est"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:ems="10"
+            android:hint="@string/fechaNac"
+            android:inputType="textPersonName"
+            android:onClick="fecha_nac_est_calendar"
+            tools:layout_editor_absoluteX="91dp"
+            tools:layout_editor_absoluteY="333dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
+        <EditText
+            android:id="@+id/edit_fecha_mat_est"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:ems="10"
+            android:hint="@string/fechaMat"
+            android:inputType="textPersonName"
+            android:onClick="fecha_mat_est_calendar"
+            tools:layout_editor_absoluteX="69dp"
+            tools:layout_editor_absoluteY="392dp" />
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>
