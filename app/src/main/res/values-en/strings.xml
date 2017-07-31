@@ -38,4 +38,5 @@
     <string name="titulo_crear_estudiante">ENTER STUDY DATA</string>
     <string name="tst_crear_docente_ok">Successfully created teacher</string>
     <string name="usuario">User:</string>
+    <string name="evento_atras">Press another time for exit</string>
 </resources>

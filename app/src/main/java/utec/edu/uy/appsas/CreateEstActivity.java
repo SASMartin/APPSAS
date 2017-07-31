@@ -3,7 +3,6 @@ package utec.edu.uy.appsas;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
-import android.icu.util.GregorianCalendar;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,12 +31,11 @@ import utec.edu.uy.appsas.ws.client.Client;
 
 public class CreateEstActivity extends AppCompatActivity {
 
-    Button btn_f_nac ,btn_f_mat,btn_crear_est ;
+    Button btn_crear_est ;
     EditText edt_nombre , edt_apellido ,edt_telefono,edt_documento,edt_correo;
     EditText edt_f_nac, edt_f_mat ;
     TextView msg_error_est ;
     Spinner spiner_est ;
-    TextView textMsgErrorFecha ;
 
     String paisSelected ;
     HashMap<String,Long>mapaPaises;
@@ -48,9 +46,7 @@ public class CreateEstActivity extends AppCompatActivity {
     public static Date fechaActual ;
     static String usuario , token , jsonEstudiante ;
 
-
     private final static int HTTP_CODE_CREATED_EST = 201 ;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,8 +64,6 @@ public class CreateEstActivity extends AppCompatActivity {
         edt_documento= (EditText)findViewById(R.id.edit_documento_est);
         edt_f_mat = (EditText)findViewById(R.id.edit_fecha_mat_est);
         edt_f_nac= (EditText)findViewById(R.id.edit_fecha_nac_est);
-
-
         btn_crear_est = (Button)findViewById(R.id.btn_crear_est);
 
         edt_f_nac.setFocusable(false);
@@ -79,21 +73,19 @@ public class CreateEstActivity extends AppCompatActivity {
 
         spiner_est = (Spinner)findViewById(R.id.spinner_est);
 
-
         String [] paises = getPaises() ;
         spiner_est.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, paises));
+        spiner_est.setSelection(5); //Selecciono 'Uruguay' por defecto
         spiner_est.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long id) {
                 paisSelected = (String) adapterView.getItemAtPosition(pos);
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
-
 
     }
 
@@ -112,9 +104,8 @@ public class CreateEstActivity extends AppCompatActivity {
         }, dia, mes, anio);
         datePickerDialog.getDatePicker().setMaxDate(fechaActual.getTime());
         datePickerDialog.show();
-
-
     }
+
     //evento del boton fecha matriculacion
     public void fecha_mat_est_calendar(View view){
         fechaNacEst = new Date();
@@ -257,7 +248,6 @@ public class CreateEstActivity extends AppCompatActivity {
             factores = new int[]{2, 9, 8, 7, 6, 3, 4};
         }
 
-
         int suma = 0;
         for(int i=0; i<ci.length()-1; i++ ){
             int digito = Integer.parseInt(ci.charAt(i) + "" ) ;
@@ -266,23 +256,19 @@ public class CreateEstActivity extends AppCompatActivity {
 
         int resto = suma % 10;
         int checkdigit = 10 - resto;
-
         if(checkdigit == 10){
             return (digVerificador == 0);
         }else {
             return (checkdigit == digVerificador) ;
         }
-
     }
+
     //validacion nombre
     public static boolean validaNombre (String nom){
         boolean valido;
         valido = nom.matches("([a-z]|[A-Z]|\\^s)+");
         return valido ;
     }
-
-
-
 
     private String[] getPaises(){
         mapaPaises = new HashMap<>();

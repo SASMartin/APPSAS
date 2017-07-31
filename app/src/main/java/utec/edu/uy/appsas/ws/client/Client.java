@@ -10,11 +10,11 @@ import java.util.Scanner;
 import utec.edu.uy.appsas.model.HTTPResponse;
 
 public class Client {
-    private final static String URL_LOGIN = "http://192.168.1.44:18080/AppWebCasoEstudioSAS_WS/sas/usuario/login";
-    private final static String URL_GET_DOCENTES = "http://192.168.1.44:18080/AppWebCasoEstudioSAS_WS/sas/docente/getDocentes";
-    private final static String URL_GET_ESTUDIANTE = "http://192.168.1.44:18080/AppWebCasoEstudioSAS_WS/sas/estudiante/getEstudiantes";
-    private final static String URL_CREATE_DOCENTE = "http://192.168.1.44:18080/AppWebCasoEstudioSAS_WS/sas/docente/createDocente";
-    private final static String URL_CREATE_ESTUDIANTE = "http://192.168.1.44:18080/AppWebCasoEstudioSAS_WS/sas/estudiante/createEstudiante";
+    private final static String URL_LOGIN = "http://192.168.1.4:8081/AppWebCasoEstudioSAS_WS/sas/usuario/login";
+    private final static String URL_GET_DOCENTES = "http://192.168.1.4:8081/AppWebCasoEstudioSAS_WS/sas/docente/getDocentes";
+    private final static String URL_GET_ESTUDIANTE = "http://192.168.1.4:8081/AppWebCasoEstudioSAS_WS/sas/estudiante/getEstudiantes";
+    private final static String URL_CREATE_DOCENTE = "http://192.168.1.4:8081/AppWebCasoEstudioSAS_WS/sas/docente/createDocente";
+    private final static String URL_CREATE_ESTUDIANTE = "http://192.168.1.4:8081/AppWebCasoEstudioSAS_WS/sas/estudiante/createEstudiante";
 
     private final static String TYPE_URLENCODED = "application/x-www-form-urlencoded";
     private final static String TYPE_JSON = "application/json";
@@ -84,6 +84,7 @@ public class Client {
             url = new URL(urlServicio + "?" + query);
 
             urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setRequestMethod(METHOD_GET);
 
             int code = urlConnection.getResponseCode();
             httpResponse = new HTTPResponse();
@@ -121,6 +122,7 @@ public class Client {
             url = new URL(urlServicio + "?" + query);
 
             urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setRequestMethod(METHOD_GET);
 
             int code = urlConnection.getResponseCode();
             httpResponse = new HTTPResponse();
