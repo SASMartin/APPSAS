@@ -35,25 +35,25 @@ public class HomeActivity extends AppCompatActivity {
                     public void onMenuSelected(int index) {
                         switch (index){
                             case 0 :
-                                Intent intent = new Intent(getBaseContext(), ListarDocentesActivity.class);
+                                Intent intent = new Intent(getBaseContext(), CrearDocActivity.class);
                                 intent.putExtra("usuario",usuario);
                                 intent.putExtra("token",token);
                                 startActivity(intent);
                                 break;
                             case 1:
-                                intent = new Intent(getBaseContext(), ListarEstuActivity.class);
+                                intent = new Intent(getBaseContext(), CreateEstActivity.class);
                                 intent.putExtra("usuario",usuario);
                                 intent.putExtra("token",token);
                                 startActivity(intent);
                                 break;
                             case 2:
-                                intent = new Intent(getBaseContext(),CrearDocActivity.class);
+                                intent = new Intent(getBaseContext(),ListarDocentesActivity.class);
                                 intent.putExtra("usuario",usuario);
                                 intent.putExtra("token",token);
                                 startActivity(intent);
                                 break;
                             case 3:
-                                intent = new Intent(getBaseContext(),CreateEstActivity.class);
+                                intent = new Intent(getBaseContext(),ListarEstuActivity.class);
                                 intent.putExtra("usuario",usuario);
                                 intent.putExtra("token",token);
                                 startActivity(intent);
