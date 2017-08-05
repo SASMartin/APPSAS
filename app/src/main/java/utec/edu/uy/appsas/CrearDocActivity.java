@@ -290,8 +290,14 @@ public class CrearDocActivity extends AppCompatActivity {
             }
         }
         if(esCIValida(edit_documento.getText().toString())==false){
-            edit_documento.setError(getString(R.string.error_documento));
-            isValid = false ;
+
+            if(paisSelected.toString().matches("Uruguay")){
+                edit_documento.setError(getString(R.string.error_documento));
+                isValid = false ;
+            }else{
+                isValid = true ;
+            }
+
         }
         if (validaNombre(edit_nombre.getText().toString())==false){
             edit_nombre.setError(getString(R.string.error_nombre));
