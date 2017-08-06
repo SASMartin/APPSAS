@@ -149,15 +149,15 @@
         android:id="@+id/linearLayout2">
 
         <EditText
-            android:id="@+id/edit_telefono"
+            android:id="@+id/edit_nombre"
             style="@style/EditTextStyle"
             android:layout_width="match_parent"
             android:layout_height="43dp"
             android:ems="10"
-            android:hint="@string/telefono"
-            android:inputType="phone"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="226dp" />
+            android:hint="@string/nombre"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="108dp" />
 
         <Space
             android:layout_width="match_parent"
@@ -179,15 +179,16 @@
             android:layout_height="10dp" />
 
         <EditText
-            android:id="@+id/edit_nombre"
+            android:id="@+id/edit_telefono"
             style="@style/EditTextStyle"
             android:layout_width="match_parent"
             android:layout_height="43dp"
             android:ems="10"
-            android:hint="@string/nombre"
-            android:inputType="textPersonName"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="108dp" />
+            android:hint="@string/telefono"
+            android:inputType="phone"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="226dp" />
+
     </LinearLayout>
 
     <LinearLayout
