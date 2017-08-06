@@ -17,6 +17,7 @@
     <!-- Home Activity Strings -->
     <string name="str_btn_get_docentes">Listar Docentes</string>
     <string name="crear_docente">Crear Docente</string>
+    <string name="evento_atras">Para salir presione nuevamente</string>
 
     <!-- Create Docente Activity Strings -->
     <string name="apellido">Apellido:</string>

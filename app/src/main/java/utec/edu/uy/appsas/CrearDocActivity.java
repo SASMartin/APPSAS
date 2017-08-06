@@ -76,13 +76,12 @@ public class CrearDocActivity extends AppCompatActivity {
 
         String[] paises = getPaises();
         spinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, paises));
+        spinner.setSelection(5); //Selecciono 'Uruguay' por defecto
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long id){
                 paisSelected = (String) adapterView.getItemAtPosition(pos);
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent){
                 //No hacer nada
@@ -239,20 +238,18 @@ public class CrearDocActivity extends AppCompatActivity {
     //Valida los campos de texto requeridos
     private boolean validate(){
         try {
-        String pattern = "dd/MM/yyyy";
-        SimpleDateFormat formatter = new SimpleDateFormat(pattern);
+            String pattern = "dd/MM/yyyy";
+            SimpleDateFormat formatter = new SimpleDateFormat(pattern);
 
-        fechaNac = new Date();
-        fechaIng = new Date();
+            fechaNac = new Date();
+            fechaIng = new Date();
             fechaEgre = new Date();
-        fechaNac.setTime(formatter.parse(edit_fNac.getText().toString()).getTime());
-        fechaIng.setTime(formatter.parse(edit_fIng.getText().toString()).getTime());
+            fechaNac.setTime(formatter.parse(edit_fNac.getText().toString()).getTime());
+            fechaIng.setTime(formatter.parse(edit_fIng.getText().toString()).getTime());
             fechaEgre.setTime(formatter.parse(edit_fEgre.getText().toString()).getTime());
-
         } catch (Exception ex) {
             Log.e("ServicioRest", "Error!", ex);
         }
-
 
         boolean isValid = true;
         if(fechaIng.before(fechaNac)){
@@ -293,8 +290,14 @@ public class CrearDocActivity extends AppCompatActivity {
             }
         }
         if(esCIValida(edit_documento.getText().toString())==false){
-            edit_documento.setError(getString(R.string.error_documento));
-            isValid = false ;
+
+            if(paisSelected.toString().matches("Uruguay")){
+                edit_documento.setError(getString(R.string.error_documento));
+                isValid = false ;
+            }else{
+                isValid = true ;
+            }
+
         }
         if (validaNombre(edit_nombre.getText().toString())==false){
             edit_nombre.setError(getString(R.string.error_nombre));
@@ -324,7 +327,6 @@ public class CrearDocActivity extends AppCompatActivity {
             factores = new int[]{2, 9, 8, 7, 6, 3, 4};
         }
 
-
         int suma = 0;
         for(int i=0; i<ci.length()-1; i++ ){
             int digito = Integer.parseInt(ci.charAt(i) + "" ) ;
@@ -339,8 +341,8 @@ public class CrearDocActivity extends AppCompatActivity {
         }else {
             return (checkdigit == digVerificador) ;
         }
-
     }
+
     //validacion nombre
     public static boolean validaNombre (String nom){
         boolean valido;

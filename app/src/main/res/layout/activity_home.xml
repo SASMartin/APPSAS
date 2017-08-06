@@ -1,50 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondomenu2_v3"
     android:orientation="horizontal"
-    android:padding="50dp">
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
 
+    <include
+        android:id="@+id/toolbarAppSAS"
+        layout="@layout/toolbar" />
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imageView7"
-            android:layout_width="276dp"
-            android:layout_height="374dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginLeft="-57dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:srcCompat="@drawable/bienvenido"
-            android:layout_marginBottom="133dp"
-            tools:layout_editor_absoluteX="-16dp" />
-
         <com.hitomi.cmlibrary.CircleMenu
             android:id="@+id/circulo_menu"
-            android:layout_width="268dp"
-            android:layout_height="301dp"
+            android:layout_width="510dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:layout_constraintTop_creator="1"
-            tools:layout_constraintRight_creator="1"
-            tools:layout_constraintBottom_creator="1"
-            android:layout_marginStart="7dp"
-            android:layout_marginEnd="7dp"
-            android:layout_marginTop="14dp"
-            tools:layout_constraintLeft_creator="1"
-            android:layout_marginBottom="14dp"
-            android:layout_marginLeft="7dp"
-            android:layout_marginRight="7dp"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintVertical_bias="1.0" />
 
     </android.support.constraint.ConstraintLayout>
