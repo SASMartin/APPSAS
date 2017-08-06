@@ -187,6 +187,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      */
     public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
         private HTTPResponse response;
+        private String messageException;
 
         UserLoginTask(String user, String password) {
             mUser = user;
@@ -198,7 +199,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             try {
                 Thread.sleep(100);
                 response = Client.login(mUser, mPassword);
-            } catch (InterruptedException e) {
+            } catch (Exception e) {
+                messageException = e.getMessage();
                 return false;
             }
             return true;
@@ -209,20 +211,23 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mAuthTask = null;
             showProgress(false);
 
-            if (success) {
-                if(response.getCode()==200){
-                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                    intent.putExtra("usuario",mUser);
-                    intent.putExtra("token", response.getMessage());
-                    startActivity(intent);
-                    finish();
-                }else{
-                    Toast.makeText(LoginActivity.this,response.getMessage(),Toast.LENGTH_SHORT).show();
-                    mPasswordView.requestFocus();
+            try {
+                if (success) {
+                    if (response.getCode() == 200) {
+                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                        intent.putExtra("usuario", mUser);
+                        intent.putExtra("token", response.getMessage());
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Toast.makeText(LoginActivity.this, response.getMessage(), Toast.LENGTH_SHORT).show();
+                        mPasswordView.requestFocus();
+                    }
+                } else {
+                    Toast.makeText(LoginActivity.this, messageException, Toast.LENGTH_SHORT).show();
                 }
-            } else {
-                mPasswordView.setError(getString(R.string.error_incorrect_password));
-                mPasswordView.requestFocus();
+            }catch(Exception e){
+                Toast.makeText(LoginActivity.this, messageException, Toast.LENGTH_SHORT).show();
             }
         }
 

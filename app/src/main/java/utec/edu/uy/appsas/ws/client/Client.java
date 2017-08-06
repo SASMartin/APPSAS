@@ -10,11 +10,11 @@ import java.util.Scanner;
 import utec.edu.uy.appsas.model.HTTPResponse;
 
 public class Client {
-    private final static String URL_LOGIN = "http://192.168.1.4:8081/AppWebCasoEstudioSAS_WS/sas/usuario/login";
-    private final static String URL_GET_DOCENTES = "http://192.168.1.4:8081/AppWebCasoEstudioSAS_WS/sas/docente/getDocentes";
-    private final static String URL_GET_ESTUDIANTE = "http://192.168.1.4:8081/AppWebCasoEstudioSAS_WS/sas/estudiante/getEstudiantes";
-    private final static String URL_CREATE_DOCENTE = "http://192.168.1.4:8081/AppWebCasoEstudioSAS_WS/sas/docente/createDocente";
-    private final static String URL_CREATE_ESTUDIANTE = "http://192.168.1.4:8081/AppWebCasoEstudioSAS_WS/sas/estudiante/createEstudiante";
+    private final static String URL_LOGIN = "http://192.168.1.3:8081/AppWebCasoEstudioSAS_WS/sas/usuario/login";
+    private final static String URL_GET_DOCENTES = "http://192.168.1.3:8081/AppWebCasoEstudioSAS_WS/sas/docente/getDocentes";
+    private final static String URL_GET_ESTUDIANTE = "http://192.168.1.3:8081/AppWebCasoEstudioSAS_WS/sas/estudiante/getEstudiantes";
+    private final static String URL_CREATE_DOCENTE = "http://192.168.1.3:8081/AppWebCasoEstudioSAS_WS/sas/docente/createDocente";
+    private final static String URL_CREATE_ESTUDIANTE = "http://192.168.1.3:8081/AppWebCasoEstudioSAS_WS/sas/estudiante/createEstudiante";
 
     private final static String TYPE_URLENCODED = "application/x-www-form-urlencoded";
     private final static String TYPE_JSON = "application/json";
@@ -28,8 +28,10 @@ public class Client {
     private final static int HTTP_CODE_SERVER_ERROR = 500;
 
     private final static String DEFAULT_ERROR = "Ups! Ha ocurrido un error inesperado";
+    private final static String CONNECTION_ERROR = "Ups! Ha ocurrido un error en la conexión";
+    private final static String UNAUTHORIZED_ERROR = "Usuario o password incorrecto";
 
-    public static HTTPResponse login(String usuario, String contrasenia){
+    public static HTTPResponse login(String usuario, String contrasenia) throws Exception{
         URL url;
         HttpURLConnection urlConnection = null;
         HTTPResponse httpResponse = null;
@@ -47,11 +49,21 @@ public class Client {
 
             urlConnection.setDoInput(true);
             urlConnection.setDoOutput(true);
-            urlConnection.connect();
+            try {
+                urlConnection.connect();
+            }catch(Exception e){
+                throw new Exception(CONNECTION_ERROR);
+            }
 
-            int code = urlConnection.getResponseCode();
             httpResponse = new HTTPResponse();
-            httpResponse.setCode(code);
+            int code = -1;
+
+            try {
+                code = urlConnection.getResponseCode();
+                httpResponse.setCode(code);
+            }catch(Exception e){
+                throw new Exception(UNAUTHORIZED_ERROR);
+            }
 
             if(code == HTTP_CODE_OK) {
                 InputStream in = new BufferedInputStream(urlConnection.getInputStream());
@@ -60,10 +72,10 @@ public class Client {
                 InputStream in = new BufferedInputStream(urlConnection.getErrorStream());
                 httpResponse.setMessage(getResponseText(in));
             }else{
-                httpResponse.setMessage(DEFAULT_ERROR);
+                throw new Exception(DEFAULT_ERROR);
             }
         } catch(Exception ex) {
-            httpResponse.setMessage(DEFAULT_ERROR);
+            throw new Exception(ex.getMessage());
         } finally {
             if(urlConnection!=null)
                 urlConnection.disconnect();

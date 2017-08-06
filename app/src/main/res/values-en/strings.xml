@@ -33,7 +33,7 @@
     <string name="str_btn_get_docentes">List Teachers</string>
     <string name="telefono">Phone:</string>
     <string name="title_activity_login">Sign in</string>
-    <string name="titulo">ENTER YOUT USER AND PASSWORD</string>
+    <string name="titulo">ENTER YOUR USER AND PASSWORD</string>
     <string name="titulo_crear_docente">ENTER TEACHER\'S DATE</string>
     <string name="titulo_crear_estudiante">ENTER STUDY DATA</string>
     <string name="tst_crear_docente_ok">Successfully created teacher</string>
