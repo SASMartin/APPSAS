@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context="utec.edu.uy.appsas.CreateEstActivity"
     tools:layout_editor_absoluteY="0dp"
-    tools:layout_editor_absoluteX="0dp">
+    tools:layout_editor_absoluteX="0dp">z
     <include
         android:id="@+id/toolbarAppSAS"
         layout="@layout/toolbar"
