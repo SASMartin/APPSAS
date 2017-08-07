@@ -21,7 +21,7 @@
     <string name="error_invalid_password">The password is too short</string>
     <string name="error_invalid_user">Icorrect user format</string>
     <string name="error_nombre">No special characters or spaces</string>
-    <string name="fechaEgr">Egress date</string>
+    <string name="fechaEgr">Graduation date</string>
     <string name="fechaIng">Date of admission</string>
     <string name="fechaMat">Date of first registration:</string>
     <string name="fechaNac">Birthdate</string>
