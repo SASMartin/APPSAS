@@ -20,18 +20,18 @@
     <string name="evento_atras">Para salir presione nuevamente</string>
 
     <!-- Create Docente Activity Strings -->
-    <string name="apellido">Apellido:</string>
-    <string name="nombre">Nombre:</string>
-    <string name="documento">Documento:</string>
-    <string name="telefono">Telefono:</string>
-    <string name="correo">Correo:</string>
+    <string name="apellido">Apellido</string>
+    <string name="nombre">Nombre</string>
+    <string name="documento">Documento</string>
+    <string name="telefono">Telefono</string>
+    <string name="correo">Correo</string>
     <string name="fechaNac">Fecha de nacimiento</string>
     <string name="fechaIng">Fecha de ingreso</string>
     <string name="fechaEgr">Fecha de Egreso</string>
     <string name="title_activity_login">Sign in</string>
     <string name="bienvenido">Bienvenido</string>
-    <string name="usuario">Usuario:</string>
-    <string name="contraseña">Contraseña:</string>
+    <string name="usuario">Usuario</string>
+    <string name="contraseña">Contraseña</string>
     <string name="ingresar">Ingresar</string>
     <string name="btn_create_doc">Crear</string>
     <string name="btn_f_nacimiento">Fecha Nac.</string>
@@ -43,18 +43,12 @@
     <string name="tst_crear_docente_ok">Docente creado exitosamente</string>
 
     <!-- Listar Estudiante Activity String  -->
-    <string name="fechaMat">Fecha de primer matricula:</string>
+    <string name="fechaMat">Fecha de primer matricula</string>
     <string name="titulo_crear_estudiante">INGRESE LOS DATOS DEL ESTUDIATE</string>
 
     <!-- Validaciones String  -->
     <string name="error_correo">No es un correo valido </string>
     <string name="error_documento">Documento no es valido</string>
     <string name="error_nombre">No caracteres especiales ni espacios</string>
-
-
-
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
