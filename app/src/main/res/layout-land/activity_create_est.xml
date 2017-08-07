@@ -167,7 +167,6 @@
             android:ems="10"
             android:hint="@string/documento"
             android:inputType="number"
-            tools:inputType="number"
             tools:layout_editor_absoluteX="394dp"
             tools:layout_editor_absoluteY="94dp" />
 
