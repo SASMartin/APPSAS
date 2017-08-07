@@ -170,7 +170,6 @@
             android:layout_height="43dp"
             android:ems="10"
             android:hint="@string/documento"
-            android:inputType="number"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="167dp" />
 
