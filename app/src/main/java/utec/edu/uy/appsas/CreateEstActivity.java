@@ -22,6 +22,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 
 import utec.edu.uy.appsas.model.Estudiante;
@@ -43,7 +44,6 @@ public class CreateEstActivity extends AppCompatActivity {
     private int dia,mes,anio;
     public static Date fechaNacEst=null;
     public static Date fechaMat = null;
-    public static Date fechaActual ;
     static String usuario , token , jsonEstudiante ;
 
     private final static int HTTP_CODE_CREATED_EST = 201 ;
@@ -91,24 +91,32 @@ public class CreateEstActivity extends AppCompatActivity {
 
     //evento del boton fecha nacimiento
     public void fecha_nac_est_calendar(View view){
+        Date fechaMax = null;
+
         final Calendar calendarMat_est = Calendar.getInstance();
         dia = calendarMat_est.get(Calendar.DAY_OF_MONTH);
         mes = calendarMat_est.get(Calendar.MONTH);
         anio = calendarMat_est.get(Calendar.YEAR);
-        fechaActual = calendarMat_est.getTime();
+
+        Calendar calMax = Calendar.getInstance();
+        calMax.set(Calendar.DAY_OF_MONTH,-1);
+        fechaMax = calMax.getTime();
+
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 edt_f_nac.setText(dayOfMonth + "/" + (month+1) + "/" + year);
             }
         }, dia, mes, anio);
-        datePickerDialog.getDatePicker().setMaxDate(fechaActual.getTime());
+
+        datePickerDialog.getDatePicker().setMaxDate(fechaMax.getTime());
         datePickerDialog.show();
     }
 
     //evento del boton fecha matriculacion
     public void fecha_mat_est_calendar(View view){
         fechaNacEst = new Date();
+
         try {
             String pattern = "dd/MM/yyyy";
             SimpleDateFormat formatter = new SimpleDateFormat(pattern);
@@ -123,10 +131,10 @@ public class CreateEstActivity extends AppCompatActivity {
                 edt_f_mat.setText(dayOfMonth + "/" + (month+1) + "/" + year);
             }
         }, dia, mes, anio);
+
         datePickerDialog.getDatePicker().setMinDate(fechaNacEst.getTime());
+        datePickerDialog.getDatePicker().setMaxDate(new Date().getTime());
         datePickerDialog.show();
-
-
     }
 
     //evento del boton crear

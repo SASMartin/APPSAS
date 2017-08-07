@@ -46,7 +46,6 @@ public class CrearDocActivity extends AppCompatActivity {
     public static Date fechaIng = null;
     public static Date fechaEgre = null;
     static String usuario, token, jsonDocente;
-    public static Date fechaActual ;
     
     private final static int HTTP_CODE_CREATED = 201;
 
@@ -91,6 +90,8 @@ public class CrearDocActivity extends AppCompatActivity {
 
     //evento del boton fecha nacimiento
     public void fecha_nacimiento(View view){
+        Date fechaActual = null;
+
         final Calendar calendarNac = Calendar.getInstance();
         dia = calendarNac.get(Calendar.DAY_OF_MONTH);
         mes = calendarNac.get(Calendar.MONTH);
@@ -103,6 +104,7 @@ public class CrearDocActivity extends AppCompatActivity {
                 edit_fNac.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
             }
         }, dia, mes, anio);
+
         datePickerDialog.getDatePicker().setMaxDate(fechaActual.getTime());
         datePickerDialog.show();
     }
