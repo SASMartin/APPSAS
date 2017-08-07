@@ -289,58 +289,11 @@ public class CrearDocActivity extends AppCompatActivity {
                 edit_correo.setError(getString(R.string.error_correo));
             }
         }
-        if(esCIValida(edit_documento.getText().toString())==false){
-
-            if(paisSelected.toString().matches("Uruguay")){
-                edit_documento.setError(getString(R.string.error_documento));
-                isValid = false ;
-            }else{
-                isValid = true ;
-            }
-
-        }
         if (validaNombre(edit_nombre.getText().toString())==false){
             edit_nombre.setError(getString(R.string.error_nombre));
             isValid = false ;
         }
         return isValid;
-    }
-
-    //validacion cedula
-    public static boolean esCIValida(String ci) {
-
-        if(ci.length() != 7 && ci.length() != 8){
-            return false;
-        }else{
-            try{
-                Integer.parseInt(ci);
-            }catch (NumberFormatException e){
-                return false;
-            }
-        }
-
-        int digVerificador = Integer.parseInt((ci.charAt(ci.length() - 1)) + "" ) ;
-        int[] factores;
-        if(ci.length() == 7){ // CI viejas
-            factores = new int[]{9, 8, 7, 6, 3, 4};
-        }else{
-            factores = new int[]{2, 9, 8, 7, 6, 3, 4};
-        }
-
-        int suma = 0;
-        for(int i=0; i<ci.length()-1; i++ ){
-            int digito = Integer.parseInt(ci.charAt(i) + "" ) ;
-            suma += digito * factores[ i ];
-        }
-
-        int resto = suma % 10;
-        int checkdigit = 10 - resto;
-
-        if(checkdigit == 10){
-            return (digVerificador == 0);
-        }else {
-            return (checkdigit == digVerificador) ;
-        }
     }
 
     //validacion nombre
