@@ -103,7 +103,7 @@ public class CrearDocActivity extends AppCompatActivity {
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 edit_fNac.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
             }
-        }, dia, mes, anio);
+        }, anio, mes, dia);
 
         datePickerDialog.getDatePicker().setMaxDate(fechaActual.getTime());
         datePickerDialog.show();
@@ -129,10 +129,11 @@ public class CrearDocActivity extends AppCompatActivity {
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 edit_fIng.setText(dayOfMonth + "/" + (month+1) + "/" + year);
             }
-        }, dia, mes, anio);
-        datePickerDialog.getDatePicker().setMinDate(fechaNac.getTime());
-        datePickerDialog.show();
+        }, anio, mes, dia);
 
+        datePickerDialog.getDatePicker().setMinDate(fechaNac.getTime());
+        datePickerDialog.getDatePicker().setMaxDate(new Date().getTime());
+        datePickerDialog.show();
     }
 
     //evento del boton fecha egreso
@@ -153,9 +154,10 @@ public class CrearDocActivity extends AppCompatActivity {
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                edit_fEgre.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
+                edit_fEgre.setText(dayOfMonth  + "/" + (month + 1) + "/" + year);
             }
-        }, dia, mes, anio);
+        }, anio, mes, dia);
+
         datePickerDialog.getDatePicker().setMinDate(fechaIng.getTime());
         datePickerDialog.show();
     }

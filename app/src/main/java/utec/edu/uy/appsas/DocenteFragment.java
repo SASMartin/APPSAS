@@ -81,8 +81,8 @@ public class DocenteFragment extends Fragment {
                     String correo = obj.getString("correo");
                     Date fechaIngreso = converterToDate(obj.getString("fechaIngreso"));
                     Pais pais = null;
-                    Date fechaEngreso = converterToDate(obj.getString("fechaEgreso"));
-                    docentes.add(new Docente(nombre, telefono, documento, apellido, fechaNac, correo, pais, fechaEngreso, fechaIngreso));
+                    Date fechaEgreso = converterToDate(obj.getString("fechaEgreso"));
+                    docentes.add(new Docente(nombre, telefono, documento, apellido, fechaNac, correo, pais, fechaEgreso, fechaIngreso));
 
                 }
                 mDocentesAdapter​ = new DocenteAdapter(getActivity(), docentes);

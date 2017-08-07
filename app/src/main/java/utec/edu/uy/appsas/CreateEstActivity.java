@@ -107,7 +107,7 @@ public class CreateEstActivity extends AppCompatActivity {
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 edt_f_nac.setText(dayOfMonth + "/" + (month+1) + "/" + year);
             }
-        }, dia, mes, anio);
+        }, anio, mes, dia);
 
         datePickerDialog.getDatePicker().setMaxDate(fechaMax.getTime());
         datePickerDialog.show();
@@ -130,7 +130,7 @@ public class CreateEstActivity extends AppCompatActivity {
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 edt_f_mat.setText(dayOfMonth + "/" + (month+1) + "/" + year);
             }
-        }, dia, mes, anio);
+        }, anio, mes, dia);
 
         datePickerDialog.getDatePicker().setMinDate(fechaNacEst.getTime());
         datePickerDialog.getDatePicker().setMaxDate(new Date().getTime());
