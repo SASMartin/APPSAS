@@ -45,8 +45,10 @@ public class DocenteAdapter extends ArrayAdapter<Docente> {
         //setup
         nombre.setText(docente.getNombre()+" " + docente.getApellido());
         documento.setText(docente.getDocumento());
-        telefono.setText(docente.getTelefono());
-        correo.setText(docente.getCorreo());
+        if(!docente.getTelefono().equals("null"))
+            telefono.setText(docente.getTelefono());
+        if(!docente.getCorreo().equals("null"))
+            correo.setText(docente.getCorreo());
         DateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
         fechaNac.setText(formatoFecha.format(docente.getFechaNac()));
         fechaIngreso.setText(formatoFecha.format(docente.getFechaIngreso()));
