@@ -132,7 +132,6 @@ public class CrearDocActivity extends AppCompatActivity {
         }, anio, mes, dia);
 
         datePickerDialog.getDatePicker().setMinDate(fechaNac.getTime());
-        datePickerDialog.getDatePicker().setMaxDate(new Date().getTime());
         datePickerDialog.show();
     }
 

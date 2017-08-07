@@ -133,7 +133,6 @@ public class CreateEstActivity extends AppCompatActivity {
         }, anio, mes, dia);
 
         datePickerDialog.getDatePicker().setMinDate(fechaNacEst.getTime());
-        datePickerDialog.getDatePicker().setMaxDate(new Date().getTime());
         datePickerDialog.show();
     }
 
